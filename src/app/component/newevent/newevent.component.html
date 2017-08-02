@@ -1,0 +1,81 @@
+<md-card>
+
+  <form (ngSubmit)="addEvent(myForm)" #myForm="ngForm">
+    <md-input-container>
+      <input mdInput placeholder="Event Name" name="eventname" value="Taxi">
+    </md-input-container>
+
+    <md-input-container>
+      <input mdInput placeholder="New member" name="member" value="matias@ironhack.com">
+    </md-input-container>
+
+    <md-input-container>
+      <input mdInput [mdDatepicker]="picker" placeholder="Choose a date">
+      <button mdSuffix [mdDatepickerToggle]="picker"></button>
+    </md-input-container>
+    <md-datepicker #picker></md-datepicker><br>
+
+    <md-select placeholder="State">
+      <md-option *ngFor="let option of options" [value]="option.value">
+        {{ option.viewValue }}
+      </md-option>
+    </md-select> <br><br>
+
+    <hr>
+
+
+    <div>
+      <md-input-container>
+        <input mdInput placeholder="Who" name="who" value="Arnau">
+      </md-input-container>
+      <md-input-container>
+        <input mdInput placeholder="Food" name="food" value="Food">
+      </md-input-container>
+      <md-input-container>
+        <input mdInput placeholder="45" name="amount" value="45">
+      </md-input-container>
+      <table>
+        <tr>
+          <th>Name</th>
+          <th>Description</th>
+          <th>Amount</th>
+        </tr>
+        <tr *ngFor='let row of rowData'>
+          <td>{{row.name}}</td>
+          <td>{{row.description}}</td>
+          <td>{{row.amount}}</td>
+        </tr>
+      </table>
+
+      <!-- <md-table [dataSource]="dataSource">
+        
+        <ng-container cdkColumnDef="name">
+          <md-header-cell *cdkHeaderCellDef> Name </md-header-cell>
+          <md-cell *cdkCellDef="let row"> {{row.name}} </md-cell>
+        </ng-container>
+        
+        <ng-container cdkColumnDef="description">
+          <md-header-cell *cdkHeaderCellDef> Description </md-header-cell>
+          <md-cell *cdkCellDef="let row"> {{row.description}}</md-cell>
+        </ng-container>
+        
+        <ng-container cdkColumnDef="amount">
+          <md-header-cell *cdkHeaderCellDef> Amount </md-header-cell>
+          <md-cell *cdkCellDef="let row"> {{row.amount}} </md-cell>
+        </ng-container>
+
+        <md-header-row *cdkHeaderRowDef="displayedColumns"></md-header-row>
+        <md-row *cdkRowDef="let row; columns: displayedColumns;"></md-row>
+      </md-table>  -->
+      <hr>
+      <button (click)='addRow()'>Add a row</button>
+    </div>
+
+    <a md-raised-button routerLink=".">Submit!</a>
+
+  </form>
+
+
+
+
+</md-card>
