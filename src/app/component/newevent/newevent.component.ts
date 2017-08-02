@@ -1,9 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import {DataSource} from '@angular/cdk';
-import {Observable} from 'rxjs/Observable';
-import 'rxjs/add/observable/of';
 import { EventsService } from '../../services/events.service';
+import {MdDialog, MdDialogRef} from '@angular/material';
+
+// import {Observable} from 'rxjs/Observable';
+// import 'rxjs/add/observable/of';
 
 @Component({
   selector: 'app-newevent',
