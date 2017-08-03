@@ -1,5 +1,32 @@
-<md-card>
-  <p>Brad paid Arnau 10&euro;</p>
+<md-card class="space">
+
+  <md-card *ngFor="let event of events">
+    <md-card-header>
+
+      <div>
+        <md-card-title>{{event.name}}</md-card-title>
+
+
+        <md-card-subtitle>{{event.host}} -
+          <span *ngIf="event.isClosed">
+            <span class="green">Open</span>
+          </span>
+          <span *ngIf="!event.isClosed">
+            <span class="red">Closed</span>
+          </span>
+        </md-card-subtitle>
+      </div>
+      <div class="control-buttons">
+        <button md-mini-fab><md-icon class="blue-button"><i class="material-icons">remove_red_eye</i></md-icon></button>
+        <button md-mini-fab><md-icon><i class="material-icons">delete</i></md-icon></button>
+      </div>
+    </md-card-header>
+  </md-card>
+
+  <div class="add-new">
+    <button md-fab class="right"><md-icon class="blue-button-big"><i class="material-icons">add</i></md-icon></button>
+  </div>
+
 </md-card>
 <md-card>
   <p>John paid Brad 15&euro;</p>

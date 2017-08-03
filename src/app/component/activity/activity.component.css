@@ -1,0 +1,18 @@
+
+ul{
+  list-style-type: none;  
+  padding: 1vh 0;  
+}
+
+li{
+    /* display: inline; */
+    margin: 1vh 0;
+}
+
+.red{
+    color: red;
+}
+
+.green{
+    color: green;
+}
