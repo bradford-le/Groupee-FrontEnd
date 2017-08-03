@@ -15,8 +15,7 @@ import {    AboutComponent                    } from './component/about/about.co
 import {    DashboardComponent                } from './component/dashboard/dashboard.component';
 import {    NeweventComponent                 } from './component/newevent/newevent.component';
 import {    EventsComponent                   } from './component/events/events.component';
-import {CdkTableModule} from '@angular/cdk';
-
+import {    CdkTableModule  } from '@angular/cdk';
 import { EventsService } from './services/events.service';
 
 import 'hammerjs';

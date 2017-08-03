@@ -22,7 +22,7 @@
     </md-select>
 
     <div>
-      
+
       <md-input-container class="space-60">
         <input mdInput placeholder="Item" name="item">
       </md-input-container>
@@ -35,7 +35,7 @@
         <input mdInput placeholder="Who" name="who">
       </md-input-container>
 
-      <a md-raised-button  routerLink="." (click)='addRow()' class="space-30">New Item</a>
+      <a md-raised-button routerLink="." (click)='addRow()' class="space-30">New Item</a>
 
       <table>
         <tr>
@@ -47,14 +47,38 @@
           <td>{{row.name}}</td>
           <td>{{row.description}}</td>
           <td>{{row.amount}}</td>
-        </tr>        
+        </tr>
         <tr>
           <td></td>
           <td>Total:</td>
           <td><strong>60€</strong></td>
       </table>
 
-      <!-- <md-table [dataSource]="dataSource">
+
+      <hr>
+    </div>
+
+
+    <md-card-header>
+      <md-card-title>
+        <h3> Per person: 20€</h3>
+      </md-card-title>
+    </md-card-header>
+
+    <br>
+    <a md-raised-button class="blue-button" routerLink="." class="gridbutton">Payment!</a>
+
+  </form>
+
+
+</md-card>
+
+
+
+
+
+
+<!-- <md-table [dataSource]="dataSource">
         
         <ng-container cdkColumnDef="name">
           <md-header-cell *cdkHeaderCellDef> Name </md-header-cell>
@@ -74,17 +98,3 @@
         <md-header-row *cdkHeaderRowDef="displayedColumns"></md-header-row>
         <md-row *cdkRowDef="let row; columns: displayedColumns;"></md-row>
       </md-table>  -->
-      <hr>      
-    </div>
-
-    <md-toolbar>
-      Individual amount: 15.80€      
-    </md-toolbar>
-    
-    <br>
-    <a md-raised-button  routerLink="." class="gridbutton">Submit!</a>
-
-  </form>
-
-
-</md-card>
