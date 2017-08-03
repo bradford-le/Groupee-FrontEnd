@@ -18,6 +18,7 @@ import {    EventsComponent                   } from './component/events/events.
 import {CdkTableModule} from '@angular/cdk';
 
 import { EventsService } from './services/events.service';
+import { ActivityService} from './services/activity.service';
 
 import 'hammerjs';
 import { ActivityComponent } from './component/activity/activity.component';
@@ -50,7 +51,7 @@ import { ActivityComponent } from './component/activity/activity.component';
     CdkTableModule
   ],
   providers: [
-    EventsService
+    EventsService,ActivityService,
   ],
   bootstrap: [AppComponent]
 })
