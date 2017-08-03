@@ -1,0 +1,17 @@
+<div class="navbar-style">
+  <div>
+    <div class="title">
+      <h1>Groupee</h1>
+    </div>
+    <div class="right">
+      <button md-raised-button [mdMenuTriggerFor]="menu"><i class="material-icons">reorder</i></button>
+      <md-menu #menu="mdMenu">
+        <button md-menu-item [routerLink]="['']">Home</button>
+        <button md-menu-item [routerLink]="['dashboard']">Dashboard</button>
+        <button md-menu-item [routerLink]="['login']">Login</button>
+        <button md-menu-item [routerLink]="['about']">About</button>
+      </md-menu>
+    </div>
+  </div>
+</div>
+
