@@ -15,7 +15,8 @@ import {    AboutComponent                    } from './component/about/about.co
 import {    DashboardComponent                } from './component/dashboard/dashboard.component';
 import {    NeweventComponent                 } from './component/newevent/newevent.component';
 import {    EventsComponent                   } from './component/events/events.component';
-import {CdkTableModule} from '@angular/cdk';
+import {    CdkTableModule                    } from '@angular/cdk';
+import {    HttpModule                        } from '@angular/http';
 
 import { EventsService } from './services/events.service';
 import { ActivityService} from './services/activity.service';
@@ -48,7 +49,8 @@ import { ActivityComponent } from './component/activity/activity.component';
     MdMenuModule,
     MdTabsModule,  
     MdTableModule,
-    CdkTableModule
+    CdkTableModule,
+    HttpModule,
   ],
   providers: [
     EventsService,ActivityService,
