@@ -1,12 +1,39 @@
+<md-card class="center">
+  <md-card>
+    <md-card-header>
+      <md-card-title>Last activity of your account</md-card-title>
+    </md-card-header>
+      <md-card-content>
+        <ul>
+          <li *ngFor="let activity of activities">
+            You 
+            <span *ngIf="!activity.pay">
+              get paid by {{activity.reciver}} <span class="green">${{activity.amount}}</span> at {{activity.event}}
+            </span>
+            <span *ngIf="activity.pay">
+              pay {{activity.reciver}} <span class="red">${{activity.amount}}</span> at {{activity.event}}
+            </span>           
+          </li>
+        </ul>
+      </md-card-content>
+  </md-card>
+</md-card>
 
-<div>
-  <div *ngFor = "let activity of activities">
-    <md-card>
-        <p>Host: {{activity.host}}</p>
-        <p>Activity Name: {{activity.name}}</p>
-        <p>Members: {{activity.members}}</p>
-        <p>Deadline: {{activity.deadline}}</p>
-        <p>State: {{activity.state}}</p>
-    </md-card>
-  </div>
-</div>
+<md-card>
+  <p>John paid Brad 15&euro;</p>
+</md-card>
+<md-card>
+  <p>Brad paid Miguel 1.56&euro;</p>
+</md-card>
+
+<!-- <div> 
+  <div *ngFor = "let activity of activities"> 
+    <md-card> 
+        <p>Host: {{activity.host}}</p> 
+        <p>Activity Name: {{activity.name}}</p> 
+        <p>Members: {{activity.members}}</p> 
+        <p>Deadline: {{activity.deadline}}</p> 
+        <p>State: {{activity.state}}</p> 
+    </md-card> 
+  </div> 
+</div> -->
