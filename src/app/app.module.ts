@@ -23,6 +23,7 @@ import { ActivityService} from './services/activity.service';
 
 import 'hammerjs';
 import { ActivityComponent } from './component/activity/activity.component';
+import { PaypalComponent } from './component/paypal/paypal.component';
 
 @NgModule({
   declarations: [
@@ -34,7 +35,8 @@ import { ActivityComponent } from './component/activity/activity.component';
     DashboardComponent,
     NeweventComponent,
     EventsComponent,
-    ActivityComponent
+    ActivityComponent,
+    PaypalComponent
   ],
   imports: [
     RouterModule.forRoot(routes),

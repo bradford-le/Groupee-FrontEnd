@@ -1,0 +1,10 @@
+<p>This page is to test Paypal functionality</p>
+
+<form (ngSubmit)="submitForm(myForm)" #myForm="ngForm">
+  <label for="stateSelect"> State Select </label><br>
+    <select name="stateSelect" ng-model="data.stateSelect">
+      <option *ngFor="let state of states" [ngValue]="state">{{state}}</option>
+    </select><br>
+  <button type="submit">SAVE</button>
+</form>
+
