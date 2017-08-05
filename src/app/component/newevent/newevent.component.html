@@ -1,14 +1,11 @@
 <md-card>
-
   <form (ngSubmit)="addEvent(myForm)" #myForm="ngForm">
     <md-input-container>
       <input mdInput placeholder="Event Name" name="eventname" value="Taxi">
     </md-input-container>
-
     <md-input-container>
-      <input mdInput placeholder="New member" name="member" value="matias@ironhack.com">
+      <input mdInput placeholder="Host" name="host" value="Groupee">
     </md-input-container>
-
     <md-input-container class="space-60">
       <input mdInput [mdDatepicker]="picker" placeholder="Choose a date">
       <button mdSuffix [mdDatepickerToggle]="picker"></button>
@@ -66,7 +63,7 @@
     </md-card-header>
 
     <br>
-    <a md-raised-button class="blue-button" routerLink="." class="gridbutton">Payment!</a>
+    <a md-raised-button class="blue-button" routerLink="." class="gridbutton">Save</a>
 
   </form>
 

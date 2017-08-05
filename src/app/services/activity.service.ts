@@ -4,13 +4,29 @@ import 'rxjs/add/operator/map';
 
 @Injectable()
 export class ActivityService {
-  BASE_URL: string = "http://localhost:3000";
 
-  constructor(private http:Http) { }
+BASE_URL: string = "http://localhost:3000";
 
-  getActivity(){
-    return this.http.get(`${this.BASE_URL}/api/activity`)
-      .map((res)=>res.json());
-  }
+constructor(private http:Http) { }
+
+getActivity(){
+  return this.http.get(`${this.BASE_URL}/api/activity`)
+    .map((res)=>res.json());
+}
+
+get(id){
+  return this.http.get(`${this.BASE_URL}/api/activity/${id}`)
+  .map((res)=> res.json());
+}
+
+edit(activity) {
+  return this.http.put(`${this.BASE_URL}/api/activity/${activity.id}`,activity)
+    .map((res)=> res.json());
+}
+
+remove(id) {
+  return this.http.delete(`${this.BASE_URL}/api/activity/${id}`)
+  .map((res)=> res.json());
+}
 
 }

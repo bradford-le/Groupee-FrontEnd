@@ -18,6 +18,7 @@ export const routes : Routes = [
     { path: 'events', component: EventsComponent },
     { path: 'activity', component: ActivityComponent },
     { path: 'paypal', component: PaypalComponent},
+    { path: 'payal/new', component: PaypalComponent}
 
 ]
 
