@@ -1,6 +1,6 @@
 import { TestBed, inject } from '@angular/core/testing';
 
-import { ActivityService } from './activity.service';
+import { ActivityService } from './event.service';
 
 describe('ActivityService', () => {
   beforeEach(() => {

@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivityService } from '../../services/activity.service';
 
 @Component({
-  selector: 'app-activity',
+  selector: 'app-event',
   templateUrl: './activity.component.html',
   styleUrls: ['./activity.component.css'],
   providers: [ActivityService]
@@ -11,10 +11,10 @@ export class ActivityComponent implements OnInit {
 
   activities;
 
-  constructor(private activity: ActivityService) { }
+  constructor(private event: ActivityService) { }
 
   ngOnInit() {
-    this.activity.getActivity()
+    this.event.getActivity()
       .subscribe((activities)=>{
         this.activities = activities;
       })

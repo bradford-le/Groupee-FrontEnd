@@ -24,6 +24,9 @@ import { ActivityService} from './services/activity.service';
 import 'hammerjs';
 import { ActivityComponent } from './component/activity/activity.component';
 import { PaypalComponent } from './component/paypal/paypal.component';
+import { MemberPipe } from './pipes/member.pipe';
+import { StatePipe } from './pipes/state.pipe';
+import { EventnamePipe } from './pipes/eventname.pipe';
 
 @NgModule({
   declarations: [
@@ -36,7 +39,10 @@ import { PaypalComponent } from './component/paypal/paypal.component';
     NeweventComponent,
     EventsComponent,
     ActivityComponent,
-    PaypalComponent
+    PaypalComponent,
+    MemberPipe,
+    StatePipe,
+    EventnamePipe
   ],
   imports: [
     RouterModule.forRoot(routes),
