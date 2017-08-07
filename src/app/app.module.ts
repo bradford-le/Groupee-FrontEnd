@@ -19,16 +19,13 @@ import {    CdkTableModule                    } from '@angular/cdk';
 import {    HttpModule                        } from '@angular/http';
 
 import { EventsService } from './services/events.service';
-import { ActivityService} from './services/event.service';
+import { ActivityService} from './services/activity.service';
 
 import 'hammerjs';
-<<<<<<< HEAD
-import { ActivityComponent } from './component/event/event.component';
-import { EventDetailComponent } from './component/event-detail/event-detail.component';
-=======
 import { ActivityComponent } from './component/activity/activity.component';
 import { PaypalComponent } from './component/paypal/paypal.component';
->>>>>>> b735e673fe1a0a2f5860fead0b997bc1c1b47875
+import { MemberPipe } from './pipes/member.pipe';
+import { StatePipe } from './pipes/state.pipe';
 
 @NgModule({
   declarations: [
@@ -41,11 +38,9 @@ import { PaypalComponent } from './component/paypal/paypal.component';
     NeweventComponent,
     EventsComponent,
     ActivityComponent,
-<<<<<<< HEAD
-    EventDetailComponent
-=======
-    PaypalComponent
->>>>>>> b735e673fe1a0a2f5860fead0b997bc1c1b47875
+    PaypalComponent,
+    MemberPipe,
+    StatePipe
   ],
   imports: [
     RouterModule.forRoot(routes),

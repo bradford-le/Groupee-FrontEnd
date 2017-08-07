@@ -1,6 +1,6 @@
-import {  Component, OnInit } from '@angular/core';
-import {  EventsService } from '../../services/events.service';
-import {  ActivatedRoute, Router} from '@angular/router';
+import { Component, OnInit } from '@angular/core';
+import { EventsService } from '../../services/events.service';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-events',
@@ -19,21 +19,30 @@ export class EventsComponent implements OnInit {
   // ];
 
   events;
+  pattern: '';
+  toggleContent = false;
+  states = [
+    'All',
+    'open',
+    'wip',
+    'done',    
+  ];
+  selectedState: 'All';
 
-  constructor(private eventAPI: EventsService,private route: ActivatedRoute, private router: Router) { }
+  constructor(private eventAPI: EventsService, private route: ActivatedRoute, private router: Router) { }
 
   ngOnInit() {
     this.eventAPI.getEvent()
-      .subscribe((events)=>{
+      .subscribe((events) => {
         this.events = events;
       })
   }
 
-  deleteActivity(id){
+  deleteActivity(id) {
 
-    if(window.confirm('Are you sure?')) {  
+    if (window.confirm('Are you sure?')) {
       this.eventAPI.remove(id)
-        .subscribe(()=>{
+        .subscribe(() => {
           this.router.navigate(['']);
         });
     }
