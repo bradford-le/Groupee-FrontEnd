@@ -6,7 +6,6 @@
       <div>
         <md-card-title>{{event.name}}</md-card-title>
 
-
         <md-card-subtitle>{{event.host}} -
           <span *ngIf="event.isClosed">
             <span class="green">Open</span>
@@ -17,8 +16,8 @@
         </md-card-subtitle>
       </div>
       <div class="control-buttons">
-        <button md-mini-fab><md-icon class="blue-button"><i class="material-icons">remove_red_eye</i></md-icon></button>
-        <button md-mini-fab><md-icon><i class="material-icons">delete</i></md-icon></button>
+        <a [routerLink]="['/event', event._id]"><button md-mini-fab><md-icon class="blue-button"><i class="material-icons">remove_red_eye</i></md-icon></button></a>
+        <button md-mini-fab (click)="deleteActivity(event._id)"><md-icon><i class="material-icons">delete</i></md-icon></button>
       </div>
     </md-card-header>
   </md-card>

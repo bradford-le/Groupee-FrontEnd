@@ -1,17 +1,17 @@
 <md-card class="center">
   <md-card>
     <md-card-header>
-      <md-card-title>Last activity of your account</md-card-title>
+      <md-card-title>Last event of your account</md-card-title>
     </md-card-header>
       <md-card-content>
         <ul>
-          <li *ngFor="let activity of activities">
+          <li *ngFor="let event of activities">
             You 
-            <span *ngIf="!activity.pay">
-              get paid by {{activity.reciver}} <span class="green">${{activity.amount}}</span> at {{activity.event}}
+            <span *ngIf="!event.pay">
+              get paid by {{event.reciver}} <span class="green">${{event.amount}}</span> at {{event.event}}
             </span>
-            <span *ngIf="activity.pay">
-              pay {{activity.reciver}} <span class="red">${{activity.amount}}</span> at {{activity.event}}
+            <span *ngIf="event.pay">
+              pay {{event.reciver}} <span class="red">${{event.amount}}</span> at {{event.event}}
             </span>           
           </li>
         </ul>
@@ -27,13 +27,13 @@
 </md-card>
 
 <!-- <div> 
-  <div *ngFor = "let activity of activities"> 
+  <div *ngFor = "let event of activities"> 
     <md-card> 
-        <p>Host: {{activity.host}}</p> 
-        <p>Activity Name: {{activity.name}}</p> 
-        <p>Members: {{activity.members}}</p> 
-        <p>Deadline: {{activity.deadline}}</p> 
-        <p>State: {{activity.state}}</p> 
+        <p>Host: {{event.host}}</p> 
+        <p>Activity Name: {{event.name}}</p> 
+        <p>Members: {{event.members}}</p> 
+        <p>Deadline: {{event.deadline}}</p> 
+        <p>State: {{event.state}}</p> 
     </md-card> 
   </div> 
 </div> -->

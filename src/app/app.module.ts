@@ -19,10 +19,11 @@ import {    CdkTableModule                    } from '@angular/cdk';
 import {    HttpModule                        } from '@angular/http';
 
 import { EventsService } from './services/events.service';
-import { ActivityService} from './services/activity.service';
+import { ActivityService} from './services/event.service';
 
 import 'hammerjs';
-import { ActivityComponent } from './component/activity/activity.component';
+import { ActivityComponent } from './component/event/event.component';
+import { EventDetailComponent } from './component/event-detail/event-detail.component';
 
 @NgModule({
   declarations: [
@@ -34,7 +35,8 @@ import { ActivityComponent } from './component/activity/activity.component';
     DashboardComponent,
     NeweventComponent,
     EventsComponent,
-    ActivityComponent
+    ActivityComponent,
+    EventDetailComponent
   ],
   imports: [
     RouterModule.forRoot(routes),
