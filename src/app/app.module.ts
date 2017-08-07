@@ -26,6 +26,7 @@ import { ActivityComponent } from './component/activity/activity.component';
 import { PaypalComponent } from './component/paypal/paypal.component';
 import { MemberPipe } from './pipes/member.pipe';
 import { StatePipe } from './pipes/state.pipe';
+import { EventnamePipe } from './pipes/eventname.pipe';
 
 @NgModule({
   declarations: [
@@ -40,7 +41,8 @@ import { StatePipe } from './pipes/state.pipe';
     ActivityComponent,
     PaypalComponent,
     MemberPipe,
-    StatePipe
+    StatePipe,
+    EventnamePipe
   ],
   imports: [
     RouterModule.forRoot(routes),

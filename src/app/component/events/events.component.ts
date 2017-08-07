@@ -17,7 +17,7 @@ export class EventsComponent implements OnInit {
   //   { name: "Italy trip", host: "Emilie", isClosed: true },
   //   { name: "Beach Volley dinner", host: "Arnau", isClosed: false },
   // ];
-
+  
   events;
   pattern: '';
   toggleContent = false;
@@ -25,7 +25,7 @@ export class EventsComponent implements OnInit {
     'All',
     'open',
     'wip',
-    'done',    
+    'done',
   ];
   selectedState: 'All';
 

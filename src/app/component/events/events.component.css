@@ -38,3 +38,24 @@
 .space{
     height: 100%; 
 }
+
+.mat-radio-button{
+    width: 25%;
+    margin-bottom: 10px;       
+}
+
+.filters{
+    width: 45%;
+}
+
+.filters:last-child{
+    margin-left: 5%;
+}
+
+.filter-section{
+    display: inline-flex;
+}
+
+.marginleft{
+    margin-left: 10px;
+}
