@@ -5,14 +5,17 @@
   </md-card-header>
 
   <md-input-container>
-    <input mdInput placeholder="Username">
+    <input mdInput placeholder="Username" [(ngModel)]="user.username" name="username">
   </md-input-container>
 
   <md-input-container>
-    <input mdInput placeholder="Password">
+    <input mdInput placeholder="Password" [(ngModel)]="user.password" name="password">
   </md-input-container>
 
+  <button (click)="login()"> login </button>
+
+  <p class="error"> {{ error }} </p>
   <br><br>
-  <a md-raised-button routerLink=".">Login!</a>
+  <a md-raised-button [routerLink]="['login']">Login!</a>
 
 </md-card>

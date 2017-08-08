@@ -20,6 +20,8 @@ import {    HttpModule                        } from '@angular/http';
 
 import { EventsService } from './services/events.service';
 import { ActivityService} from './services/activity.service';
+import { SessionService} from './services/session.service';
+
 
 import 'hammerjs';
 import { ActivityComponent } from './component/activity/activity.component';
@@ -27,6 +29,7 @@ import { PaypalComponent } from './component/paypal/paypal.component';
 import { MemberPipe } from './pipes/member.pipe';
 import { StatePipe } from './pipes/state.pipe';
 import { EventnamePipe } from './pipes/eventname.pipe';
+import { SignupComponent } from './component/signup/signup.component';
 
 @NgModule({
   declarations: [
@@ -42,7 +45,8 @@ import { EventnamePipe } from './pipes/eventname.pipe';
     PaypalComponent,
     MemberPipe,
     StatePipe,
-    EventnamePipe
+    EventnamePipe,
+    SignupComponent
   ],
   imports: [
     RouterModule.forRoot(routes),
@@ -61,7 +65,7 @@ import { EventnamePipe } from './pipes/eventname.pipe';
     HttpModule,
   ],
   providers: [
-    EventsService,ActivityService,
+    EventsService,ActivityService,SessionService
   ],
   bootstrap: [AppComponent]
 })
