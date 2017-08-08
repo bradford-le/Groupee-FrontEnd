@@ -1,0 +1,51 @@
+
+table, td, th {    
+    text-align: left;
+}
+
+th > span {
+    float: right;
+}
+
+table {
+    border-collapse: collapse;
+    width: 100%;
+}
+
+th, td {
+    padding: 15px;
+}
+
+.full-width{
+    width: 100%;
+}
+
+.space-30{
+    width: 30%;
+    margin-left: 8%;  
+}
+
+.space-60{
+    width: 60%;  
+}
+
+.right{
+    float: right;
+}
+
+.gridbutton{
+    display: grid;
+}
+
+.center{
+    text-align: center;
+}
+
+.right{
+    text-align: right;
+}
+
+.mat-fab, .mat-mini-fab, .mat-raised-button{
+    background-color: #3f51b5;
+    color: white;
+}

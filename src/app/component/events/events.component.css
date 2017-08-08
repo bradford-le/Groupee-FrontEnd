@@ -1,0 +1,61 @@
+.red{
+    color: red;
+}
+
+.green{
+    color: green;
+}
+
+.mat-mini-fab.mat-accent{
+    background-color: #3f51b5;
+}
+
+.mat-mini-fab .mat-icon{
+    padding: 0;
+} 
+
+.control-buttons{
+    position: absolute;
+    right: 10px;
+}
+
+.add-new{    
+    width: 100%;      
+}
+
+.add-new button{
+    margin: 5vh 0;    
+}
+
+.right{
+    float: right;
+}
+
+.blue-button-big{
+    padding: 0;
+}
+
+.space{
+    height: 100%; 
+}
+
+.mat-radio-button{
+    width: 25%;
+    margin-bottom: 10px;       
+}
+
+.filters{
+    width: 45%;
+}
+
+.filters:last-child{
+    margin-left: 5%;
+}
+
+.filter-section{
+    display: inline-flex;
+}
+
+.marginleft{
+    margin-left: 10px;
+}
