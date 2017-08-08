@@ -20,25 +20,25 @@ BASE_URL: string = "http://localhost:3000";
     return Observable.throw(e.json().message);
   }
 
-  getActivity() {
-    return this.http.get(`${this.BASE_URL}/api/activity`, this.requestOptions())
+  getEvents() {
+    return this.http.get(`${this.BASE_URL}/api/event`, this.requestOptions())
       .map((res) => res.json())
       .catch(this.handleError);
 
   }
 
   get(id) {
-    return this.http.get(`${this.BASE_URL}/api/activity/${id}`)
+    return this.http.get(`${this.BASE_URL}/api/event/${id}`)
       .map((res) => res.json());
   }
 
-  edit(activity) {
-    return this.http.put(`${this.BASE_URL}/api/activity/${activity.id}`, activity)
+  edit(groupeeEvent) {
+    return this.http.put(`${this.BASE_URL}/api/event/${groupeeEvent.id}`, groupeeEvent)
       .map((res) => res.json());
   }
 
   remove(id) {
-    return this.http.delete(`${this.BASE_URL}/api/activity/${id}`)
+    return this.http.delete(`${this.BASE_URL}/api/event/${id}`)
       .map((res) => res.json());
   }
 
@@ -48,17 +48,3 @@ BASE_URL: string = "http://localhost:3000";
   }
 
 }
-
-
-
-/*
-getactivityItems(): any[] {
-    return this.items;
-  }
-
-  addactivityItem(name: string, description: string, amount: number) {
-    const copiedData = this.getChangedEventItems.slice();
-    copiedData.push({name, description, amount});
-    this.eventItemsChange.next(copiedData);
-  }
-*/
