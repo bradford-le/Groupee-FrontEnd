@@ -1,14 +1,53 @@
-<form (ngSubmit)="submitForm()" #myForm="ngForm">
-    <div>
-      <label for="name">Host Name:</label>
-      <input type="text" id="name" placeholder="Host Name" [(ngModel)]="groupeeEvent.host" name="groupeeEvent.host">
+<div class="container">
+    <div class="row">
+      <div class="col-xs-12">
+        <div class="margin-20">
+          <h4>Edit Event</h4>
+        </div>
+        <form [formGroup]="myForm" novalidate (ngSubmit)="save(myForm)">
+          <div class="form-group">
+            <label>Event Name</label>
+            <input type="text" class="form-control" formControlName="name" [(ngModel)]="groupeeEvent.name">
+          </div>
+          <!--ITEMS-->
+          <div formArrayName="items">
+            <div *ngFor="let item of myForm.controls.items.controls; let i=index" class="panel panel-default">
+              <div class="panel-heading">
+                <span>ITEM {{i + 1}}</span>
+                <span class="glyphicon glyphicon-remove pull-right" *ngIf="myForm.controls.items.controls.length > 1" (click)="removeItem(i)"></span>
+              </div>
+              <div class="panel-body" [formGroupName]="i">
+                <div class="form-group col-xs-6">
+                  <label>Description</label>
+                  <input type="text" class="form-control" formControlName="description">
+                </div>
+                <div class="form-group col-xs-6">
+                  <label>Amount</label>
+                  <input type="text" class="form-control" formControlName="amount">
+                </div>
+              </div>
+            </div>
+          </div>
+  
+          <div class="margin-20">
+            <a (click)="addItem()" style="cursor: default">
+              Add another Item +
+            </a>
+          </div>
+  
+          <div class="margin-20">
+            <button type="submit" class="btn btn-primary pull-right" [disabled]="!myForm.valid">Submit</button>
+          </div>
+          <div class="clearfix"></div>
+  
+          <div class="margin-20">
+            <div>myForm details:-</div>
+            <pre>Is myForm valid?: <br>{{myForm.valid | json}}</pre>
+            <pre>form value: <br>{{myForm.value | json}}</pre>
+          </div>
+        </form>
+      </div>
     </div>
-    <div>
-      <label for="eventName">Event Name:</label>
-      <input type="text" id="eventName" placeholder="Event Name" [(ngModel)]="groupeeEvent.name" name="groupeeEvent.name">
-    </div>
-    <button type="submit">Save Changes</button>
-    </form>
-    <br>
+  </div>
     <button md-raised-button  [routerLink]="['/dashboard']"> BACK </button>
 
