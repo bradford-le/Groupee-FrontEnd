@@ -17,7 +17,7 @@ export class EventsComponent implements OnInit {
   //   { name: "Italy trip", host: "Emilie", isClosed: true },
   //   { name: "Beach Volley dinner", host: "Arnau", isClosed: false },
   // ];
-  
+
   events;
   pattern: '';
   toggleContent = false;
@@ -32,10 +32,11 @@ export class EventsComponent implements OnInit {
   constructor(private eventAPI: EventsService, private route: ActivatedRoute, private router: Router) { }
 
   ngOnInit() {
-    this.eventAPI.getEvent()
+    this.eventAPI.getActivity()
       .subscribe((events) => {
         this.events = events;
       })
+      
   }
 
   deleteActivity(id) {

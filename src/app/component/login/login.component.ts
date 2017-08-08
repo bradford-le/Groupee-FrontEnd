@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { SessionService } from "../../services/session.service";
+import { Router } from '@angular/router';
+
 
 @Component({
   selector: 'app-login',
@@ -7,9 +10,28 @@ import { Component, OnInit } from '@angular/core';
 })
 export class LoginComponent implements OnInit {
 
-  constructor() { }
+  user: Object = {
+		username: '',
+		password: '',
+  }
+  
+  error = null;
+
+  constructor(private session: SessionService, private router: Router) { }
 
   ngOnInit() {
   }
+
+  login() {
+    this.session.login(this.user).subscribe(
+      (data) => {
+        this.router.navigate(['/dashboard']);
+      },
+      (err) => {
+        this.error = err;
+      });
+  }
+
+  
 
 }
