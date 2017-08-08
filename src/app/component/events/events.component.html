@@ -3,7 +3,6 @@
   <section class="filter-section">
     <md-card-subtitle>Enable filters</md-card-subtitle>
     <md-slide-toggle [color]="accent" [(ngModel)]="toggleContent" class="marginleft"></md-slide-toggle>
-
   </section>
 
   <md-card *ngIf="toggleContent === true">
@@ -33,9 +32,9 @@
 
     <div>
       <md-card-title>{{event.name}}</md-card-title>
-
+      
       <md-card-subtitle [ngSwitch]="event.state">
-        <div *ngSwitchCase="'open'">{{event.host}} - <span class="green">Open</span></div>
+        <div *ngSwitchCase="'OPEN'">{{event.host}} - <span class="green">Open</span></div>
         <div *ngSwitchCase="'wip'">{{event.host}} - <span class="green">Work in progress</span></div>
         <div *ngSwitchCase="'done'">{{event.host}} - <span class="red">Closed</span></div>
       </md-card-subtitle>
@@ -43,7 +42,7 @@
     </div>
 
     <div class="control-buttons">
-      <a [routerLink]="['/event', event._id]"><button md-mini-fab><md-icon class="blue-button"><i class="material-icons">remove_red_eye</i></md-icon></button></a>
+      <a [routerLink]="['/events', event._id]"><button md-mini-fab><md-icon class="blue-button"><i class="material-icons">remove_red_eye</i></md-icon></button></a>
       <button md-mini-fab (click)="deleteActivity(event._id)"><md-icon><i class="material-icons">delete</i></md-icon></button>
     </div>
 
@@ -52,5 +51,5 @@
 </md-card>
 
 <div class="add-new">
-  <button md-fab class="right"><md-icon class="blue-button-big"><i class="material-icons">add</i></md-icon></button>
+  <button [routerLink]="['/newevent']" md-fab class="right"><md-icon class="blue-button-big"><i class="material-icons">add</i></md-icon></button>
 </div>

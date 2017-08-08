@@ -16,8 +16,8 @@ export const routes : Routes = [
     { path: 'signup', component: SignupComponent },
     { path: 'about', component: AboutComponent },
     { path: 'dashboard', component: DashboardComponent, canActivate: [SessionService] },    
-    { path: 'newevent', component: NeweventComponent },    
-    { path: 'events', component: EventsComponent },
+    { path: 'newevent', component: NeweventComponent, canActivate: [SessionService] },    
+    { path: 'events', component: EventsComponent, canActivate: [SessionService] },
     { path: 'activity', component: ActivityComponent , canActivate: [SessionService]},
 
 ]
