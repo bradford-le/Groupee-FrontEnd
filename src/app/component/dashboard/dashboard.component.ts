@@ -14,14 +14,14 @@ import { EventsService } from '../../services/events.service';
 })
 export class DashboardComponent implements OnInit {
 
-  activities;
+  groupeeEvents;
 
   constructor(private event: EventsService) { }
 
   ngOnInit() {
-    this.event.getActivity()
-      .subscribe((activities) => {
-        this.activities = activities;
+    this.event.getEvents()
+      .subscribe((groupeeEvents) => {
+        this.groupeeEvents = groupeeEvents;
       })
   }
 

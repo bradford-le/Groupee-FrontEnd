@@ -5,13 +5,13 @@
     </md-card-header>
       <md-card-content>
         <ul>
-          <li *ngFor="let event of activities">
+          <li *ngFor="let activity of activities">
             You 
-            <span *ngIf="!event.pay">
-              get paid by {{event.reciver}} <span class="green">${{event.amount}}</span> at {{event.event}}
+            <span *ngIf="!activity.pay">
+              get paid by {{activity.reciever}} <span class="green">${{activity.amount}}</span> at {{activity.event}}
             </span>
-            <span *ngIf="event.pay">
-              pay {{event.reciver}} <span class="red">${{event.amount}}</span> at {{event.event}}
+            <span *ngIf="activity.pay">
+              pay {{activity.reciever}} <span class="red">${{activity.amount}}</span> at {{activity.event}}
             </span>           
           </li>
         </ul>
@@ -25,15 +25,3 @@
 <md-card>
   <p>Brad paid Miguel 1.56&euro;</p>
 </md-card>
-
-<!-- <div> 
-  <div *ngFor = "let event of activities"> 
-    <md-card> 
-        <p>Host: {{event.host}}</p> 
-        <p>Activity Name: {{event.name}}</p> 
-        <p>Members: {{event.members}}</p> 
-        <p>Deadline: {{event.deadline}}</p> 
-        <p>State: {{event.state}}</p> 
-    </md-card> 
-  </div> 
-</div> -->

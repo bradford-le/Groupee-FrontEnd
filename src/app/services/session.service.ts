@@ -7,7 +7,7 @@ import { Router, CanActivate } from '@angular/router';
 
 @Injectable()
 export class SessionService implements CanActivate {
-  
+
   BASE_URL: string = 'http://localhost:3000';
 
   public user = {};
@@ -64,7 +64,29 @@ export class SessionService implements CanActivate {
           this.isAuthenticated = true;
           localStorage.setItem('token', this.token);
         }
-        
+
+        return this.isAuthenticated;
+
+      }).catch(this.handleError);
+  }
+
+  signup(newUser) {
+    return this.http.post(`${this.BASE_URL}/signup`, newUser)
+      .map(res => {
+        let json = res.json();
+        let token = json.token;
+        let user = json.user;
+        console.log(user);
+        if (token) {
+          this.token = token;
+          this.user = {
+            _id: user.id,
+            username: user.username
+          }
+          this.isAuthenticated = true;
+          localStorage.setItem('token', this.token);
+        }
+        this.router.navigate(['/login']);
         return this.isAuthenticated;
 
       }).catch(this.handleError);

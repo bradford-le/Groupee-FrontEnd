@@ -24,7 +24,6 @@ import { SessionService} from './services/session.service';
 
 import 'hammerjs';
 import { ActivityComponent } from './component/activity/activity.component';
-import { PaypalComponent } from './component/paypal/paypal.component';
 import { MemberPipe } from './pipes/member.pipe';
 import { StatePipe } from './pipes/state.pipe';
 import { EventnamePipe } from './pipes/eventname.pipe';
@@ -41,7 +40,6 @@ import { SignupComponent } from './component/signup/signup.component';
     NeweventComponent,
     EventsComponent,
     ActivityComponent,
-    PaypalComponent,
     MemberPipe,
     StatePipe,
     EventnamePipe,
@@ -64,7 +62,7 @@ import { SignupComponent } from './component/signup/signup.component';
     HttpModule,
   ],
   providers: [
-    EventsService,SessionService, //ActivityService
+    EventsService,SessionService
   ],
   bootstrap: [AppComponent]
 })

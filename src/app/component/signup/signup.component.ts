@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { SessionService } from "../../services/session.service";
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-signup',
@@ -13,23 +14,23 @@ export class SignupComponent implements OnInit {
     password: ''
   };
 
-  constructor(private session: SessionService, ) { }
+  constructor(private session: SessionService,private router:Router ) { }
 
   ngOnInit() {
   }
 
-  // signup() {
-  // 	this.session.signup(this.newUser)
-  //     .subscribe(result => {
-  //         if (result === true) {
-  //             // login successful
-  //             console.log('result ok', result);              
-  //         } else {
-  //         		console.log('result ko', result);
-  //             // login failed
-  //             // this.error = 'Username or password is incorrect';
-  //         }
-  //     });
-  // }
+  signup() {
+  	this.session.signup(this.newUser)
+      .subscribe(result => {
+          if (result === true) {
+              // login successful
+              console.log('result ok', result);              
+          } else {
+          		console.log('result ko', result);
+              // login failed
+              // this.error = 'Username or password is incorrect';
+          }
+      });
+  }
 
 }
