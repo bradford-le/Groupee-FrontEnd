@@ -2,6 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { EventsService } from '../../services/events.service';
 import { FormsModule }  from '@angular/forms'
+import { FormGroup, FormArray,FormBuilder,Validators} from '@angular/forms';
+import {groupeeEvent} from './event.interface';
+import {selector} from 'bootstrap-select';
 
 @Component({
   selector: 'app-edit-event',
@@ -12,6 +15,7 @@ export class EditEventComponent implements OnInit {
 
   groupeeEvent: any;
 
+  public myForm: FormGroup;
 
   states=[
     {name: "OPEN", view: "OPEN"},
@@ -20,7 +24,7 @@ export class EditEventComponent implements OnInit {
     {name: "DONE",view: "DONE"}
    ];
 
-  constructor(private eventAPI: EventsService, private router: Router, private route: ActivatedRoute) { }
+  constructor(private eventAPI: EventsService, private router: Router, private route: ActivatedRoute,private _fb:FormBuilder) { }
 
   ngOnInit() {
     this.groupeeEvent = {
@@ -32,6 +36,30 @@ export class EditEventComponent implements OnInit {
     this.route.params.subscribe(params => {
       this.getEventDetails(params['id']);
     });
+
+    this.myForm = this._fb.group({
+      name:[''],
+      items: this._fb.array([
+          this.initItem(),
+      ])
+  });
+  }
+
+  initItem() {
+    return this._fb.group({
+        description: ['',Validators.required],
+        amount: ['',Validators.required]
+    });
+}
+
+  addItem() {
+    const control = <FormArray>this.myForm.controls['items'];
+    control.push(this.initItem());
+  }
+
+  removeItem(i: number) {
+    const control = <FormArray>this.myForm.controls['items'];
+    control.removeAt(i);
   }
 
   getEventDetails(id) {
@@ -41,5 +69,11 @@ export class EditEventComponent implements OnInit {
         console.log('get Event Details',theEvent);
       });
   }
+
+  save(model: groupeeEvent) {
+    // call API to save
+    // ...
+    console.log(model);
+}
 }
  
