@@ -7,6 +7,7 @@ import { DashboardComponent } from './component/dashboard/dashboard.component'
 import { NeweventComponent  } from './component/newevent/newevent.component';
 import { EventsComponent    } from './component/events/events.component';
 import { ActivityComponent  } from './component/activity/activity.component';
+import { EditEventComponent } from './component/edit-event/edit-event.component';
 import { SessionService } from "./services/session.service";
 
 
@@ -16,10 +17,10 @@ export const routes : Routes = [
     { path: 'signup', component: SignupComponent },
     { path: 'about', component: AboutComponent },
     { path: 'dashboard', component: DashboardComponent, canActivate: [SessionService] },    
-    { path: 'newevent', component: NeweventComponent },    
-    { path: 'events', component: EventsComponent },
+    { path: 'newevent', component: NeweventComponent, canActivate: [SessionService] },    
+    { path: 'events', component: EventsComponent, canActivate: [SessionService] },
+    { path: 'events/:id', component: EditEventComponent, canActivate: [SessionService]},    
     { path: 'activity', component: ActivityComponent , canActivate: [SessionService]},
-
 ]
 
 

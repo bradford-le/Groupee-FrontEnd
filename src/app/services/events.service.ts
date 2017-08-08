@@ -28,17 +28,21 @@ BASE_URL: string = "http://localhost:3000";
   }
 
   get(id) {
-    return this.http.get(`${this.BASE_URL}/api/event/${id}`)
+    return this.http.get(`${this.BASE_URL}/api/event/${id}`,this.requestOptions())
+      .map((res) => res.json());
+  }
+  
+  edit(groupeeEvent) {
+    return this.http.put(`${this.BASE_URL}/api/event/${groupeeEvent.id}`, groupeeEvent,this.requestOptions())
       .map((res) => res.json());
   }
 
-  edit(groupeeEvent) {
-    return this.http.put(`${this.BASE_URL}/api/event/${groupeeEvent.id}`, groupeeEvent)
-      .map((res) => res.json());
+  add(groupeeEvent){
+    return this.http.post(`${this.BASE_URL}/api/event`,groupeeEvent,this.requestOptions()).map((res)=> res.json());
   }
 
   remove(id) {
-    return this.http.delete(`${this.BASE_URL}/api/event/${id}`)
+    return this.http.delete(`${this.BASE_URL}/api/event/${id}`,this.requestOptions())
       .map((res) => res.json());
   }
 
