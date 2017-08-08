@@ -1,59 +1,14 @@
-
-  <form [formGroup]="myForm" novalidate (ngSubmit)="save(myForm)">
-
-    <div class="form-group">
-        <input class="form-control" fromControlName="eventname" mdInput placeholder="Event Name" value="Taxi"> 
-          <small *ngIf="!myForm.controls.name.valid" class="text-danger">
-              Event Name is required
-          </small>
-    </div>
-    <div class="form-group">
-        <input class="form-control" fromControlName="email" mdInput placeholder="Email" value="Groupee@gmail.com"> 
-          <small *ngIf="!myForm.controls.name.valid" class="text-danger">
-              Email is required
-          </small>
-    </div>
-
-    <!--ITEMS-->
-    <div formArrayName="items">
-      <div *ngFor="let item of myForm.controls.items.controls; let i=index" class="panel panel-default">
-        <div class="panel-heading">
-          <span>Item {{i + 1}}</span>
-          <span class="glyphicon glyphicon-remove pull-right" *ngIf="myForm.controls.items.controls.length > 1" (click)="removeItem(i)"></span>
-        </div>
-        <div class="panel-body" [formGroupName]="i">
-          <div class="form-group col-xs-6">
-            <label>Description</label>
-            <input type="text" class="form-control" formControlName="description">
-            <small [hidden]="myForm.controls.items.controls[i].controls.description.valid" class="text-danger">
-                Description is required
-            </small>
-          </div>
-          <div class="form-group col-xs-6">
-            <label>Amount</label>
-            <input type="text" class="form-control" formControlName="amount">
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <div class="margin-20">
-      <a (click)="addItem()" style="cursor: default">
-        Add another Item +
-      </a>
-    </div>
-
-    <div class="margin-20">
-      <button type="submit" class="btn btn-primary pull-right" [disabled]="!myForm.valid">Submit</button>
-    </div>
-    <div class="clearfix"></div>
-
-    <div class="margin-20">
-      <div>myForm details:-</div>
-      <pre>Is myForm valid?: <br>{{myForm.valid | json}}</pre>
-      <pre>form value: <br>{{myForm.value | json}}</pre>
-    </div>
+<md-card>
+  <form (ngSubmit)="addEvent(myForm)" #myForm="ngForm">
+    <md-input-container>
+      <input mdInput placeholder="Event Name" name="eventname" value="Groupee" [(ngModel)]="groupeeEvent.name">
+    </md-input-container>
+    <button md-raised-button type="submit"> SAVE </button>
+    <br>
+    <a md-raised-button class="blue-button" [routerLink]="['/dashboard']" class="gridbutton">Cancel</a>
   </form>
+</md-card>
+
 
 
 
