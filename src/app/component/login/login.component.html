@@ -12,10 +12,10 @@
     <input mdInput placeholder="Password" [(ngModel)]="user.password" name="password">
   </md-input-container>
 
-  <button (click)="login()"> login </button>
+ 
 
   <p class="error"> {{ error }} </p>
   <br><br>
-  <a md-raised-button [routerLink]="['login']">Login!</a>
+  <button md-raised-button (click)="login()"> login </button>
 
 </md-card>
