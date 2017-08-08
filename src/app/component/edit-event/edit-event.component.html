@@ -1,0 +1,14 @@
+<form (ngSubmit)="submitForm()" #myForm="ngForm">
+    <div>
+      <label for="name">Host Name:</label>
+      <input type="text" id="name" placeholder="Host Name" [(ngModel)]="groupeeEvent.host" name="groupeeEvent.host">
+    </div>
+    <div>
+      <label for="eventName">Event Name:</label>
+      <input type="text" id="eventName" placeholder="Event Name" [(ngModel)]="groupeeEvent.name" name="groupeeEvent.name">
+    </div>
+    <button type="submit">Save Changes</button>
+    </form>
+    <br>
+    <button md-raised-button  [routerLink]="['/dashboard']"> BACK </button>
+

@@ -29,6 +29,7 @@ import { MemberPipe } from './pipes/member.pipe';
 import { StatePipe } from './pipes/state.pipe';
 import { EventnamePipe } from './pipes/eventname.pipe';
 import { SignupComponent } from './component/signup/signup.component';
+import { EditEventComponent } from './component/edit-event/edit-event.component';
 
 @NgModule({
   declarations: [
@@ -44,7 +45,8 @@ import { SignupComponent } from './component/signup/signup.component';
     MemberPipe,
     StatePipe,
     EventnamePipe,
-    SignupComponent
+    SignupComponent,
+    EditEventComponent
   ],
   imports: [
     RouterModule.forRoot(routes),
