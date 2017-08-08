@@ -8,7 +8,7 @@ import { NeweventComponent  } from './component/newevent/newevent.component';
 import { EventsComponent    } from './component/events/events.component';
 import { ActivityComponent  } from './component/activity/activity.component';
 import { PaypalComponent    } from './component/paypal/paypal.component';
-import { SessionService } from "./services/session.service";
+import { SessionService }   from "./services/session.service";
 
 
 export const routes : Routes = [

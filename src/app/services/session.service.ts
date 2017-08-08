@@ -7,6 +7,7 @@ import { Router, CanActivate } from '@angular/router';
 
 @Injectable()
 export class SessionService implements CanActivate {
+  
   BASE_URL: string = 'http://localhost:3000';
 
   public user = {};

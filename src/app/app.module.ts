@@ -19,7 +19,6 @@ import {    CdkTableModule                    } from '@angular/cdk';
 import {    HttpModule                        } from '@angular/http';
 
 import { EventsService } from './services/events.service';
-import { ActivityService} from './services/activity.service';
 import { SessionService} from './services/session.service';
 
 
@@ -65,7 +64,7 @@ import { SignupComponent } from './component/signup/signup.component';
     HttpModule,
   ],
   providers: [
-    EventsService,ActivityService,SessionService
+    EventsService,SessionService, //ActivityService
   ],
   bootstrap: [AppComponent]
 })
