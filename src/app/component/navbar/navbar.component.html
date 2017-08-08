@@ -1,18 +1,18 @@
 <div class="navbar-style">
-  <div>    
+  <div>
     <md-card-title class="title">Groupee</md-card-title>
-    
+
     <div class="right">
       <button md-raised-button [mdMenuTriggerFor]="menu"><i class="material-icons">reorder</i></button>
       <md-menu #menu="mdMenu">
         <button md-menu-item [routerLink]="['']">Home</button>
         <button md-menu-item [routerLink]="['dashboard']">Dashboard</button>
-        <button md-menu-item [routerLink]="['login']">Login</button>
-        <button md-menu-item [routerLink]="['signup']">Signup</button>
+        <button md-menu-item [routerLink]="['login']" *ngIf="!this.session.isAuthenticated">Login</button>
+        <button md-menu-item [routerLink]="['signup']" *ngIf="!this.session.isAuthenticated">Signup</button>
+        <button md-menu-item (click)="logout()" *ngIf="this.session.isAuthenticated">Logout</button>
         <button md-menu-item [routerLink]="['about']">About</button>
         <button md-menu-item [routerLink]="['paypal']">PayPal Test</button>
       </md-menu>
     </div>
   </div>
 </div>
-
