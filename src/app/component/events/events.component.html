@@ -38,7 +38,7 @@
         <div *ngSwitchCase="'wip'">{{event.host}} - <span class="green">Work in progress</span></div>
         <div *ngSwitchCase="'done'">{{event.host}} - <span class="red">Closed</span></div>
       </md-card-subtitle>
-
+      <md-card-subtitle>{{event.created_at}}</md-card-subtitle>
     </div>
 
     <div class="control-buttons">
