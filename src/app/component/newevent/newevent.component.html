@@ -1,97 +1,60 @@
-<md-card>
-  <form (ngSubmit)="addEvent(myForm)" #myForm="ngForm">
-    <md-input-container>
-      <input mdInput placeholder="Event Name" name="eventname" value="Taxi">
-    </md-input-container>
-    <md-input-container>
-      <input mdInput placeholder="Host" name="host" value="Groupee">
-    </md-input-container>
-    <md-input-container class="space-60">
-      <input mdInput [mdDatepicker]="picker" placeholder="Choose a date">
-      <button mdSuffix [mdDatepickerToggle]="picker"></button>
-    </md-input-container>
-    <md-datepicker #picker></md-datepicker>
 
-    <md-select placeholder="State" class="space-30">
-      <md-option *ngFor="let option of options" [value]="option.value">
-        {{ option.viewValue }}
-      </md-option>
-    </md-select>
+  <form [formGroup]="myForm" novalidate (ngSubmit)="save(myForm)">
 
-    <div>
-
-      <md-input-container class="space-60">
-        <input mdInput placeholder="Item" name="item">
-      </md-input-container>
-
-      <md-input-container class="space-30">
-        <input mdInput placeholder="Amount" name="amount">
-      </md-input-container>
-
-      <md-input-container class="space-60">
-        <input mdInput placeholder="Who" name="who">
-      </md-input-container>
-
-      <a md-raised-button routerLink="." (click)='addRow()' class="space-30">New Item</a>
-
-      <table>
-        <tr>
-          <th>Name</th>
-          <th>Description</th>
-          <th>Amount</th>
-        </tr>
-        <tr *ngFor='let row of rowData'>
-          <td>{{row.name}}</td>
-          <td>{{row.description}}</td>
-          <td>{{row.amount}}</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>Total:</td>
-          <td><strong>60€</strong></td>
-      </table>
-
-
-      <hr>
+    <div class="form-group">
+        <input class="form-control" fromControlName="eventname" mdInput placeholder="Event Name" value="Taxi"> 
+          <small *ngIf="!myForm.controls.name.valid" class="text-danger">
+              Event Name is required
+          </small>
+    </div>
+    <div class="form-group">
+        <input class="form-control" fromControlName="email" mdInput placeholder="Email" value="Groupee@gmail.com"> 
+          <small *ngIf="!myForm.controls.name.valid" class="text-danger">
+              Email is required
+          </small>
     </div>
 
+    <!--ITEMS-->
+    <div formArrayName="items">
+      <div *ngFor="let item of myForm.controls.items.controls; let i=index" class="panel panel-default">
+        <div class="panel-heading">
+          <span>Item {{i + 1}}</span>
+          <span class="glyphicon glyphicon-remove pull-right" *ngIf="myForm.controls.items.controls.length > 1" (click)="removeItem(i)"></span>
+        </div>
+        <div class="panel-body" [formGroupName]="i">
+          <div class="form-group col-xs-6">
+            <label>Description</label>
+            <input type="text" class="form-control" formControlName="description">
+            <small [hidden]="myForm.controls.items.controls[i].controls.description.valid" class="text-danger">
+                Description is required
+            </small>
+          </div>
+          <div class="form-group col-xs-6">
+            <label>Amount</label>
+            <input type="text" class="form-control" formControlName="amount">
+          </div>
+        </div>
+      </div>
+    </div>
 
-    <md-card-header>
-      <md-card-title>
-        <h3> Per person: 20€</h3>
-      </md-card-title>
-    </md-card-header>
+    <div class="margin-20">
+      <a (click)="addItem()" style="cursor: default">
+        Add another Item +
+      </a>
+    </div>
 
-    <br>
-    <a md-raised-button class="blue-button" routerLink="." class="gridbutton">Save</a>
+    <div class="margin-20">
+      <button type="submit" class="btn btn-primary pull-right" [disabled]="!myForm.valid">Submit</button>
+    </div>
+    <div class="clearfix"></div>
 
+    <div class="margin-20">
+      <div>myForm details:-</div>
+      <pre>Is myForm valid?: <br>{{myForm.valid | json}}</pre>
+      <pre>form value: <br>{{myForm.value | json}}</pre>
+    </div>
   </form>
 
 
-</md-card>
 
 
-
-
-
-
-<!-- <md-table [dataSource]="dataSource">
-        
-        <ng-container cdkColumnDef="name">
-          <md-header-cell *cdkHeaderCellDef> Name </md-header-cell>
-          <md-cell *cdkCellDef="let row"> {{row.name}} </md-cell>
-        </ng-container>
-        
-        <ng-container cdkColumnDef="description">
-          <md-header-cell *cdkHeaderCellDef> Description </md-header-cell>
-          <md-cell *cdkCellDef="let row"> {{row.description}}</md-cell>
-        </ng-container>
-        
-        <ng-container cdkColumnDef="amount">
-          <md-header-cell *cdkHeaderCellDef> Amount </md-header-cell>
-          <md-cell *cdkCellDef="let row"> {{row.amount}} </md-cell>
-        </ng-container>
-
-        <md-header-row *cdkHeaderRowDef="displayedColumns"></md-header-row>
-        <md-row *cdkRowDef="let row; columns: displayedColumns;"></md-row>
-      </md-table>  -->

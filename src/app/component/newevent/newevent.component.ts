@@ -3,6 +3,8 @@ import { FormsModule } from '@angular/forms';
 import {DataSource} from '@angular/cdk';
 import { EventsService } from '../../services/events.service';
 import {MdDialog, MdDialogRef} from '@angular/material';
+import {FormBuilder,FormArray, FormControl, FormGroup, Validators,ReactiveFormsModule} from '@angular/forms';
+import {Router} from '@angular/router';
 
 // import {Observable} from 'rxjs/Observable';
 // import 'rxjs/add/observable/of';
@@ -13,10 +15,17 @@ import {MdDialog, MdDialogRef} from '@angular/material';
   styleUrls: ['./newevent.component.css']
 })
 export class NeweventComponent implements OnInit {
-
-  // eventname :String;
-  // description: String;
   
+  groupeeEvent = {
+    host: '',
+    email: '',
+    items: [],
+    state: ''
+  };
+  item = '';
+
+  public myForm: FormGroup;
+
   options = [
     {value: 'open-0',   viewValue: 'Open'},
     {value: 'wip-1',    viewValue: 'In progress'},
@@ -30,33 +39,44 @@ export class NeweventComponent implements OnInit {
       amount: 20
     }    
   ];
-
-  // dataSource: EventsDataSource | null;
-  // displayedColumns = ['name', 'description', 'amount'];
   
-  constructor(){}
-  // constructor(private eventsService: EventsService) { }
-
+  constructor(private _fb: FormBuilder, private eventsAPI: EventsService,private router:Router){}
+  
   ngOnInit() {
-    // this.dataSource = new EventsDataSource(this.eventsService);
+    this.myForm = this._fb.group({
+      name: ['', [Validators.required, Validators.minLength(2)]],
+      items: this._fb.array([
+          this.initItem(),
+      ])  
+    });
   }
 
-  addEvent(form){
-    //something
+  initItem() {
+    return this._fb.group({
+      description: ['', Validators.required],
+      amount: ['']
+    });
   }
 
-  addRow() {
-    // this.eventsService.addEventItem("Test", "Test", 0.99);
-    this.rowData.push({
-      name: 'another',
-      description: 'beers',
-      amount: 20
-    })
+  addItem() {
+    const control = <FormArray>this.myForm.controls['items'];
+    control.push(this.initItem());
   }
 
+  removeItem(i: number) {
+    const control = <FormArray>this.myForm.controls['items'];
+    control.removeAt(i);
 }
 
-
+  save() {
+    this.eventsAPI.add(this.groupeeEvent)
+    .subscribe((res)=>{
+      console.log(res)
+      this.router.navigate(['/events'])		
+    })
+   console.log(this.groupeeEvent);
+  }
+}
 
 // export class EventsDataSource extends DataSource<any> {
 //   constructor(private eventsService: EventsService) {
