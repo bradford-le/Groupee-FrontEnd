@@ -1,28 +1,50 @@
 import { Injectable } from '@angular/core';
-import { BehaviorSubject } from 'rxjs/BehaviorSubject';
+import { Http, Headers, RequestOptions } from '@angular/http';
+import 'rxjs/add/operator/map';
+import 'rxjs/add/operator/catch';
+import 'rxjs/add/observable/throw';
+import { Observable } from 'rxjs/Rx';
+import { SessionService } from './session.service';
 
 @Injectable()
 export class EventsService {
 
-  items = [
-    {name: "Coffee", description: "Time for a coffee", amount: 15},
-    {name: "Coffee", description: "Time for a coffee", amount: 15},
-    {name: "Coffee", description: "Time for a coffee", amount: 15},
-    {name: "Coffee", description: "Time for a coffee", amount: 15}
-  ];
+BASE_URL: string = "http://localhost:3000";
 
-  eventItemsChange: BehaviorSubject<any[]> = new BehaviorSubject<any[]>([]);
-  get getChangedEventItems(): any[] { return this.eventItemsChange.value; }
+  constructor(
+    private http: Http,
+    private session: SessionService
+  ) { }
 
-  constructor() { }
-
-  getEventItems(): any[] {
-    return this.items;
+  handleError(e) {
+    return Observable.throw(e.json().message);
   }
 
-  addEventItem(name: string, description: string, amount: number) {
-    const copiedData = this.getChangedEventItems.slice();
-    copiedData.push({name, description, amount});
-    this.eventItemsChange.next(copiedData);
+  getEvents() {
+    return this.http.get(`${this.BASE_URL}/api/event`, this.requestOptions())
+      .map((res) => res.json())
+      .catch(this.handleError);
+
   }
+
+  get(id) {
+    return this.http.get(`${this.BASE_URL}/api/event/${id}`)
+      .map((res) => res.json());
+  }
+
+  edit(groupeeEvent) {
+    return this.http.put(`${this.BASE_URL}/api/event/${groupeeEvent.id}`, groupeeEvent)
+      .map((res) => res.json());
+  }
+
+  remove(id) {
+    return this.http.delete(`${this.BASE_URL}/api/event/${id}`)
+      .map((res) => res.json());
+  }
+
+  private requestOptions(): RequestOptions {
+    let headers = new Headers({ 'Authorization': `JWT ${this.session.token}` });
+    return new RequestOptions({ headers: headers });
+  }
+
 }

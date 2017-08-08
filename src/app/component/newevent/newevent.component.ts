@@ -17,7 +17,6 @@ export class NeweventComponent implements OnInit {
   // eventname :String;
   // description: String;
   
-
   options = [
     {value: 'open-0',   viewValue: 'Open'},
     {value: 'wip-1',    viewValue: 'In progress'},

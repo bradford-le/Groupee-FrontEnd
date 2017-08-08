@@ -1,6 +1,11 @@
-import { Component, OnInit } from '@angular/core';
-
-
+import { Component, OnInit, Injectable } from '@angular/core';
+import { Http, Headers, RequestOptions } from '@angular/http';
+import 'rxjs/add/operator/map';
+import 'rxjs/add/operator/catch';
+import 'rxjs/add/observable/throw';
+import { Observable } from 'rxjs/Rx';
+import { SessionService } from '../../services/session.service';
+import { EventsService } from '../../services/events.service';
 
 @Component({
   selector: 'app-dashboard',
@@ -9,9 +14,15 @@ import { Component, OnInit } from '@angular/core';
 })
 export class DashboardComponent implements OnInit {
 
-  constructor() { }
+  groupeeEvents;
+
+  constructor(private event: EventsService) { }
 
   ngOnInit() {
+    this.event.getEvents()
+      .subscribe((groupeeEvents) => {
+        this.groupeeEvents = groupeeEvents;
+      })
   }
 
 }

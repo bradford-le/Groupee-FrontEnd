@@ -19,10 +19,15 @@ import {    CdkTableModule                    } from '@angular/cdk';
 import {    HttpModule                        } from '@angular/http';
 
 import { EventsService } from './services/events.service';
-import { ActivityService} from './services/activity.service';
+import { SessionService} from './services/session.service';
+
 
 import 'hammerjs';
 import { ActivityComponent } from './component/activity/activity.component';
+import { MemberPipe } from './pipes/member.pipe';
+import { StatePipe } from './pipes/state.pipe';
+import { EventnamePipe } from './pipes/eventname.pipe';
+import { SignupComponent } from './component/signup/signup.component';
 
 @NgModule({
   declarations: [
@@ -34,7 +39,11 @@ import { ActivityComponent } from './component/activity/activity.component';
     DashboardComponent,
     NeweventComponent,
     EventsComponent,
-    ActivityComponent
+    ActivityComponent,
+    MemberPipe,
+    StatePipe,
+    EventnamePipe,
+    SignupComponent
   ],
   imports: [
     RouterModule.forRoot(routes),
@@ -53,7 +62,7 @@ import { ActivityComponent } from './component/activity/activity.component';
     HttpModule,
   ],
   providers: [
-    EventsService,ActivityService,
+    EventsService,SessionService
   ],
   bootstrap: [AppComponent]
 })
