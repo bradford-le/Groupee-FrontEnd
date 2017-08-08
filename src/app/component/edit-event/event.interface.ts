@@ -5,6 +5,7 @@ export interface groupeeEvent {
 }
 
 export interface Item{
+  userId: string;
   description: string;
   amount: number;
 }

@@ -9,6 +9,12 @@
             <label>Event Name</label>
             <input type="text" class="form-control" formControlName="name" [(ngModel)]="groupeeEvent.name">
           </div>
+          <md-radio-group>
+              <md-radio-button value="OPEN">OPEN</md-radio-button>
+              <md-radio-button value="REQUEST">REQUEST PAYMENT</md-radio-button>
+              <md-radio-button value="PAY">PAYOUT</md-radio-button>
+            </md-radio-group>
+          <br>
           <!--ITEMS-->
           <div formArrayName="items">
             <div *ngFor="let item of myForm.controls.items.controls; let i=index" class="panel panel-default">

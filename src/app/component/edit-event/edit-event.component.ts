@@ -4,6 +4,7 @@ import { EventsService } from '../../services/events.service';
 import { FormsModule }  from '@angular/forms'
 import { FormGroup, FormArray,FormBuilder,Validators} from '@angular/forms';
 import {groupeeEvent} from './event.interface';
+import {selector} from 'bootstrap-select';
 
 @Component({
   selector: 'app-edit-event',
@@ -46,8 +47,8 @@ export class EditEventComponent implements OnInit {
 
   initItem() {
     return this._fb.group({
-        description: [''],
-        amount: ['']
+        description: ['',Validators.required],
+        amount: ['',Validators.required]
     });
 }
 
