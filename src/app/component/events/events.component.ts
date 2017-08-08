@@ -14,7 +14,7 @@ export class EventsComponent implements OnInit {
   toggleContent = false;
   states = [
     'All',
-    'open',
+    'OPEN',
     'wip',
     'done',
   ];

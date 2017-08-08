@@ -11,13 +11,6 @@ import {Router} from '@angular/router';
 })
 export class NeweventComponent implements OnInit {
   
-  groupeeEvent = {
-    host: '',
-    email: '',
-    items: [],
-    state: ''
-  };
-  item = '';
 
   groupeeEvent = {
     name: '',
@@ -37,8 +30,4 @@ export class NeweventComponent implements OnInit {
     })
     console.log(this.groupeeEvent)
   }
-
-  removeItem(i: number) {
-    const control = <FormArray>this.myForm.controls['items'];
-    control.removeAt(i);
 }
