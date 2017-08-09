@@ -32,8 +32,8 @@ BASE_URL: string = "http://localhost:3000";
       .map((res) => res.json());
   }
   
-  edit(groupeeEvent) {
-    return this.http.put(`${this.BASE_URL}/api/event/${groupeeEvent.id}`, groupeeEvent,this.requestOptions())
+  update(groupeeEvent) {
+    return this.http.put(`${this.BASE_URL}/api/event/${groupeeEvent._id}`, groupeeEvent,this.requestOptions())
       .map((res) => res.json());
   }
 
