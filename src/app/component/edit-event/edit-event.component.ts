@@ -17,13 +17,6 @@ export class EditEventComponent implements OnInit {
 
   public myForm: FormGroup;
 
-  states=[
-    {name: "OPEN", view: "OPEN"},
-    {name: "REQUEST PAYMENTS",view: "REQUEST PAYMENTS"},
-    {name: "PAYOUTS",view: "SENDING PAYOUTS"},
-    {name: "DONE",view: "DONE"}
-   ];
-
   constructor(private eventAPI: EventsService, private router: Router, private route: ActivatedRoute,private _fb:FormBuilder) { }
 
   ngOnInit() {
@@ -47,8 +40,8 @@ export class EditEventComponent implements OnInit {
 
   initItem() {
     return this._fb.group({
-        description: ['',Validators.required],
-        amount: ['',Validators.required]
+        description: [''],
+        amount: ['']
     });
 }
 
@@ -70,10 +63,13 @@ export class EditEventComponent implements OnInit {
       });
   }
 
-  save(model: groupeeEvent) {
-    // call API to save
-    // ...
-    console.log(model);
+  save() {
+    // this.eventAPI.update(this.groupeeEvent)
+    //   .subscribe(()=>{
+    //     this.router.navigate(['/dashboard']);
+    //   });
+    console.log(this.groupeeEvent._id);
+    console.log(this.myForm);
 }
 }
  
