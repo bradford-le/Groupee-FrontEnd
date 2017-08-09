@@ -14,7 +14,7 @@ export class EventsComponent implements OnInit {
   toggleContent = false;
   states = [
     'All',
-    'open',
+    'OPEN',
     'wip',
     'done',
   ];
@@ -27,7 +27,7 @@ export class EventsComponent implements OnInit {
       .subscribe((events) => {
         this.events = events;
       })
-      
+      console.log("events",this.events);
   }
 
   deleteActivity(id) {
@@ -35,9 +35,9 @@ export class EventsComponent implements OnInit {
     if (window.confirm('Are you sure?')) {
       this.eventAPI.remove(id)
         .subscribe(() => {
-          this.router.navigate(['']);
+          this.router.navigate(['/events']);
         });
     }
   }
-
+  
 }
