@@ -3,8 +3,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { EventsService } from '../../services/events.service';
 import { FormsModule }  from '@angular/forms'
 import { FormGroup, FormArray,FormBuilder,Validators} from '@angular/forms';
-import {groupeeEvent} from './event.interface';
-import {selector} from 'bootstrap-select';
+import { groupeeEvent, Item } from './event.interface';
 
 @Component({
   selector: 'app-edit-event',
@@ -32,7 +31,8 @@ export class EditEventComponent implements OnInit {
       host:'',
       name:'',
       state:'',
-      payments:[]
+      payments:[],
+      items:[]
     }
     this.route.params.subscribe(params => {
       this.getEventDetails(params['id']);
@@ -72,14 +72,21 @@ export class EditEventComponent implements OnInit {
       });
   }
 
-  save() {
+  save(item) {
+    item = this.myForm.value.items;
     this.eventAPI.update(this.groupeeEvent)
-      .subscribe(()=>{
-        this.router.navigate(['/dashboard']);
+      .subscribe((newEvent)=>{
+        this.groupeeEvent = newEvent;
       });
-    console.log(this.groupeeEvent._id);
-    console.log(this.groupeeEvent.state);
-    console.log(this.myForm);
+
+    console.log("FORM VALUES:", this.myForm);
+
+    this.myForm.value.items.forEach((item) => {
+      this.eventAPI.createItem(this.groupeeEvent._id, item.amount, item.description)
+        .subscribe((newEvent)=>{
+          console.log("THE NEW EVENT",newEvent);
+      });
+      this.router.navigate(['/dashboard']);
+    });
+  }
 }
-}
- 

@@ -46,6 +46,11 @@ BASE_URL: string = "http://localhost:3000";
       .map((res) => res.json());
   }
 
+  createItem(eventId, amount, description) {
+    return this.http.post(`${this.BASE_URL}/api/event/${eventId}/items`, {amount, description}, this.requestOptions())
+      .map((res)=>res.json());
+  }
+
   private requestOptions(): RequestOptions {
     let headers = new Headers({ 'Authorization': `JWT ${this.session.token}` });
     return new RequestOptions({ headers: headers });

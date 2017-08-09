@@ -26,8 +26,9 @@ export class EventsComponent implements OnInit {
     this.eventAPI.getEvents()
       .subscribe((events) => {
         this.events = events;
+        console.log(this.events);
       })
-      console.log("events",this.events);
+      console.log("Should show events for current user");
   }
 
   deleteActivity(id) {
