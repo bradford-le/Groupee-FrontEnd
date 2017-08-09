@@ -3,8 +3,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { EventsService } from '../../services/events.service';
 import { FormsModule }  from '@angular/forms'
 import { FormGroup, FormArray,FormBuilder,Validators} from '@angular/forms';
-import {groupeeEvent} from './event.interface';
-import {selector} from 'bootstrap-select';
+import {groupeeEvent} from './event.interface'; 
 
 @Component({
   selector: 'app-edit-event',
