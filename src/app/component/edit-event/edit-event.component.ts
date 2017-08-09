@@ -17,6 +17,14 @@ export class EditEventComponent implements OnInit {
 
   public myForm: FormGroup;
 
+  selectedState: string;
+
+  states = [
+    "OPEN",
+    "REQUEST PAYMENTS",
+    "PAYOUTS"
+  ];
+
   constructor(private eventAPI: EventsService, private router: Router, private route: ActivatedRoute,private _fb:FormBuilder) { }
 
   ngOnInit() {
@@ -32,6 +40,7 @@ export class EditEventComponent implements OnInit {
 
     this.myForm = this._fb.group({
       name:[''],
+      state:[''],
       items: this._fb.array([
           this.initItem(),
       ])
@@ -64,11 +73,12 @@ export class EditEventComponent implements OnInit {
   }
 
   save() {
-    // this.eventAPI.update(this.groupeeEvent)
-    //   .subscribe(()=>{
-    //     this.router.navigate(['/dashboard']);
-    //   });
+    this.eventAPI.update(this.groupeeEvent)
+      .subscribe(()=>{
+        this.router.navigate(['/dashboard']);
+      });
     console.log(this.groupeeEvent._id);
+    console.log(this.groupeeEvent.state);
     console.log(this.myForm);
 }
 }
