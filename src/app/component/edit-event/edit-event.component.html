@@ -15,21 +15,55 @@
             </md-radio-button>
           </md-radio-group>
           <br>
+          <!-- MEMBERS PANEL -->
+          <div class="panel-group">
+            <div class="panel panel-default">
+              <div class="panel-heading">
+                <h4 class="panel-title" style="text-align:center">
+                  <a data-toggle="collapse" href="#collapse1">Click to View Current Members</a>
+                </h4>
+              </div>
+              <div id="collapse1" class="panel-collapse collapse">
+                <div *ngFor="let member of groupeeEvent.members" class="panel-body">{{member.username}}</div>
+                <div class="panel-footer">TOTAL MEMBERS:
+                  {{groupeeEvent.members.length}}
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- MEMBERS -->
+          <div formArrayName="members">
+            <div *ngFor="let member of myForm.controls.members.controls; let i=index" class="panel panel-default">
+              <div class="panel-heading">
+                <span>MEMBER {{i + 1}}</span>
+                <span class="glyphicon glyphicon-remove pull-right" *ngIf="myForm.controls.members.controls.length > 1" (click)="removeMember(i)"></span>
+              </div>
+              <div class="panel-body" [formGroupName]="i">
+                <div class="form-group col-xs-12">
+                  <label>Username</label>
+                  <input type="text" class="form-control" formControlName="username">
+                </div>
+              </div>
+            </div>
+          </div>
+      
+          <div class="margin-20">
+            <a (click)="addMember()" style="cursor: default">
+              Add another Member +
+            </a>
+          </div>
           <!-- ITEMS PANEL -->
           <div class="panel-group">
               <div class="panel panel-default">
                 <div class="panel-heading">
                   <h4 class="panel-title" style="text-align:center">
-                    <a data-toggle="collapse" href="#collapse1">Click to View Current Items</a>
+                    <a data-toggle="collapse" href="#collapse2">Click to View Current Items</a>
                   </h4>
                 </div>
-                <div id="collapse1" class="panel-collapse collapse">
+                <div id="collapse2" class="panel-collapse collapse">
                   <div *ngFor="let item of groupeeEvent.items" class="panel-body">{{item.description}} Amount: ${{item.amount}} <span style="float:right; color: grey">{{item.username}}</span></div>
                   <div class="panel-footer">TOTAL:
                     {{total}}
-                  </div>
-                  <div class="panel-footer">MEDIAN:
-                    {{median}}
                   </div>
                   <div class="panel-footer">YOU OWE:</div>
                 </div>

@@ -3,7 +3,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { EventsService } from '../../services/events.service';
 import { FormsModule }  from '@angular/forms'
 import { FormGroup, FormArray,FormBuilder,Validators} from '@angular/forms';
-import { groupeeEvent, Item } from './event.interface';
+import { groupeeEvent, Item,Member } from './event.interface';
 
 @Component({
   selector: 'app-edit-event',
@@ -33,6 +33,7 @@ export class EditEventComponent implements OnInit {
       host:'',
       name:'',
       state:'',
+      members:[],
       payments:[],
       items:[]
     }
@@ -43,6 +44,9 @@ export class EditEventComponent implements OnInit {
     this.myForm = this._fb.group({
       name:[''],
       state:[''],
+      members: this._fb.array([
+        this.initMember(),
+      ]),
       items: this._fb.array([
           this.initItem(),
       ])
@@ -56,14 +60,30 @@ export class EditEventComponent implements OnInit {
     });
 }
 
+  initMember() {
+    return this._fb.group({
+      username: ['']
+    });
+  }
+
   addItem() {
     const control = <FormArray>this.myForm.controls['items'];
     control.push(this.initItem());
   }
 
+  addMember() {
+    const control = <FormArray>this.myForm.controls['members'];
+    control.push(this.initMember());
+  }
+
   removeItem(i: number) {
     const control = <FormArray>this.myForm.controls['items'];
     control.removeAt(i);
+  }
+
+  removeMember(i:number) {
+    const control = <FormArray>this.myForm.controls['members'];
+    control.removeAt(i);  
   }
 
   getEventDetails(id) {
@@ -78,8 +98,10 @@ export class EditEventComponent implements OnInit {
       });
   }
 
-  save(item) {
+  save(item,member) {
     item = this.myForm.value.items;
+    member = this.myForm.value.members;
+
     this.eventAPI.update(this.groupeeEvent)
       .subscribe((newEvent)=>{
         this.groupeeEvent = newEvent;
@@ -100,7 +122,6 @@ export class EditEventComponent implements OnInit {
 
       if(this.groupeeEvent.state === "REQUEST PAYMENTS"){
         console.log("CAUGHT REQUEST PAYMENT! NEED TO CALL ALGORITHM");
-        
       }
   }
   
@@ -108,7 +129,4 @@ export class EditEventComponent implements OnInit {
     return this.groupeeEvent.items.reduce(function(sum, el) { return sum + el.amount }, 0);
   }
 
-  calcMedian(): number {
-    return this.groupeeEvent.total/this.groupeeEvent.members.length;
-  }
 }
