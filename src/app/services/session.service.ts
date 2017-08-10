@@ -4,7 +4,6 @@ import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/catch';
 import { Observable } from 'rxjs/Rx';
 import { Router, CanActivate } from '@angular/router';
-import { environment } from '../../environments/environment';
 
 // Environment variables
 import { environment } from '../../environments/environment';
