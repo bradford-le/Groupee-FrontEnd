@@ -10,8 +10,7 @@
         <button md-menu-item [routerLink]="['login']" *ngIf="!this.session.isAuthenticated">Login</button>
         <button md-menu-item [routerLink]="['signup']" *ngIf="!this.session.isAuthenticated">Signup</button>
         <button md-menu-item (click)="logout()" *ngIf="this.session.isAuthenticated">Logout</button>
-        <button md-menu-item [routerLink]="['about']">About</button>
-        <button md-menu-item [routerLink]="['paypal']">PayPal Test</button>
+        <button md-menu-item [routerLink]="['about']">About</button>        
       </md-menu>
     </div>
   </div>

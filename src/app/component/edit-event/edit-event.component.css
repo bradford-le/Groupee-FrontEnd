@@ -5,7 +5,25 @@
 md-radio-button{
   font-size: 1.2rem;
   padding: 5px;
+  width: 32%;
 }
 md-radio-group{
   text-align: center;
+}
+
+.right{
+  float: right;
+}
+.right2{
+  float: right;
+  margin-left: 5px;
+}
+
+.width-55{
+  width: 55%;
+}
+
+.width-30{
+  width: 30%;
+  margin-left: 10%;
 }
