@@ -22,7 +22,7 @@ export class EditEventComponent implements OnInit {
 
   states = [
     "OPEN",
-    "REQUEST PAYMENTS",
+    "REQUEST",
     "PAYOUTS"
   ];
 
