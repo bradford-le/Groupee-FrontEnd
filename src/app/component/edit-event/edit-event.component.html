@@ -26,7 +26,7 @@
                 <div id="collapse1" class="panel-collapse collapse">
                   <div *ngFor="let item of groupeeEvent.items" class="panel-body">{{item.description}} Amount: ${{item.amount}} <span style="float:right; color: grey">{{item.username}}</span></div>
                   <div class="panel-footer">TOTAL:
-                    
+                    {{total}}
                   </div>
                   <div class="panel-footer">YOU OWE:</div>
                 </div>
