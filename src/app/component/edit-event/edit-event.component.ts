@@ -93,6 +93,10 @@ export class EditEventComponent implements OnInit {
       }
         this.router.navigate(['/dashboard']);
       });
+
+      if(this.groupeeEvent.state === "REQUEST PAYMENTS"){
+        console.log("CAUGHT REQUEST PAYMENT! NEED TO CALL ALGORITHM");
+      }
   }
   
   totalItems(): number {
