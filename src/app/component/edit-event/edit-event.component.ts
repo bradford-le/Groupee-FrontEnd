@@ -13,7 +13,7 @@ import {groupeeEvent} from './event.interface';
 export class EditEventComponent implements OnInit {
 
   groupeeEvent: any;
-
+  total : Number;
   public myForm: FormGroup;
 
   selectedState: string;
@@ -69,6 +69,7 @@ export class EditEventComponent implements OnInit {
       .subscribe((theEvent)=>{
         this.groupeeEvent = theEvent;
         console.log('get Event Details',theEvent);
+        this.total = this.totalItems();
       });
   }
 
@@ -80,7 +81,7 @@ export class EditEventComponent implements OnInit {
       });
 
     console.log("FORM VALUES:", this.myForm);
-
+    
     this.myForm.value.items.forEach((item) => {
       this.eventAPI.createItem(this.groupeeEvent._id, item.amount, item.description)
         .subscribe((newEvent)=>{
