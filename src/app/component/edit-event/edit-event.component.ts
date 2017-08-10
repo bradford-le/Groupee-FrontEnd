@@ -14,6 +14,7 @@ export class EditEventComponent implements OnInit {
 
   groupeeEvent: any;
   total: Number;
+  median: Number;
 
   public myForm: FormGroup;
 
@@ -71,6 +72,9 @@ export class EditEventComponent implements OnInit {
         this.groupeeEvent = theEvent;
         console.log('get Event Details',theEvent);
         this.total = this.totalItems();
+        console.log("Median",Number(this.median));
+        console.log("MEMBERS",this.groupeeEvent.members.length);
+        console.log("TOTAL:",this.groupeeEvent.total);
       });
   }
 
@@ -102,5 +106,9 @@ export class EditEventComponent implements OnInit {
   
   totalItems(): number {
     return this.groupeeEvent.items.reduce(function(sum, el) { return sum + el.amount }, 0);
+  }
+
+  calcMedian(): number {
+    return this.groupeeEvent.total/this.groupeeEvent.members.length;
   }
 }
