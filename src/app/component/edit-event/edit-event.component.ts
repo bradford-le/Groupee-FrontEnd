@@ -13,6 +13,7 @@ import { groupeeEvent, Item } from './event.interface';
 export class EditEventComponent implements OnInit {
 
   groupeeEvent: any;
+  total: Number;
 
   public myForm: FormGroup;
 
@@ -69,6 +70,7 @@ export class EditEventComponent implements OnInit {
       .subscribe((theEvent)=>{
         this.groupeeEvent = theEvent;
         console.log('get Event Details',theEvent);
+        this.total = this.totalItems();
       });
   }
 
@@ -80,14 +82,17 @@ export class EditEventComponent implements OnInit {
       });
 
     console.log("FORM VALUES:", this.myForm);
-
-    this.myForm.value.items.forEach((item) => {
-      this.eventAPI.createItem(this.groupeeEvent._id, item.amount, item.description)
-        .subscribe((newEvent)=>{
-          console.log("THE NEW EVENT",newEvent);
+  
+      this.myForm.value.items.forEach((item) => {
+        if(item.amount !=="" && item.desription !==""){
+        console.log("inside item",item);
+        this.eventAPI.createItem(this.groupeeEvent._id, item.amount, item.description)
+          .subscribe((newEvent)=>{
+            console.log("THE NEW EVENT",newEvent);
+        });
+      }
+        this.router.navigate(['/dashboard']);
       });
-      this.router.navigate(['/dashboard']);
-    });
   }
   
   totalItems(): number {
