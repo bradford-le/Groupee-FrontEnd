@@ -3,7 +3,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { EventsService } from '../../services/events.service';
 import { FormsModule }  from '@angular/forms'
 import { FormGroup, FormArray,FormBuilder,Validators} from '@angular/forms';
-import { groupeeEvent, Item } from './event.interface';
+import {groupeeEvent} from './event.interface'; 
 
 @Component({
   selector: 'app-edit-event',

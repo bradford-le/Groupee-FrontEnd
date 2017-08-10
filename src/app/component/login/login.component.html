@@ -12,6 +12,8 @@
     <input mdInput placeholder="Password" [(ngModel)]="user.password" name="password">
   </md-input-container>
 
+ 
+<button (click)="login()"> login </button>
   <p class="error"> {{ error }} </p>
   <br><br>
   <button md-raised-button (click)="login()"> login </button>

@@ -6,10 +6,14 @@ import 'rxjs/add/observable/throw';
 import { Observable } from 'rxjs/Rx';
 import { SessionService } from './session.service';
 
+// Environment variables
+import { environment } from '../../environments/environment';
+
 @Injectable()
 export class EventsService {
 
-BASE_URL: string = "http://localhost:3000";
+// BASE_URL: string = "http://localhost:3000";
+BASE_URL = environment.BASE_URL;
 
   constructor(
     private http: Http,
