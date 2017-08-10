@@ -96,6 +96,7 @@ export class EditEventComponent implements OnInit {
 
       if(this.groupeeEvent.state === "REQUEST PAYMENTS"){
         console.log("CAUGHT REQUEST PAYMENT! NEED TO CALL ALGORITHM");
+        
       }
   }
   
