@@ -89,4 +89,8 @@ export class EditEventComponent implements OnInit {
       this.router.navigate(['/dashboard']);
     });
   }
+  
+  totalItems(): number {
+    return this.groupeeEvent.items.reduce(function(sum, el) { return sum + el.amount }, 0);
+  }
 }

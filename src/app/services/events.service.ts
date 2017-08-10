@@ -5,6 +5,7 @@ import 'rxjs/add/operator/catch';
 import 'rxjs/add/observable/throw';
 import { Observable } from 'rxjs/Rx';
 import { SessionService } from './session.service';
+import { environment } from '../../environments/environment';
 
 // Environment variables
 import { environment } from '../../environments/environment';
