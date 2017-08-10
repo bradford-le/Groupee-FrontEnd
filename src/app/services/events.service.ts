@@ -5,11 +5,16 @@ import 'rxjs/add/operator/catch';
 import 'rxjs/add/observable/throw';
 import { Observable } from 'rxjs/Rx';
 import { SessionService } from './session.service';
+import { environment } from '../../environments/environment';
+
+// Environment variables
+import { environment } from '../../environments/environment';
 
 @Injectable()
 export class EventsService {
 
-BASE_URL: string = "http://localhost:3000";
+// BASE_URL: string = "http://localhost:3000";
+BASE_URL = environment.BASE_URL;
 
   constructor(
     private http: Http,
@@ -44,6 +49,11 @@ BASE_URL: string = "http://localhost:3000";
   remove(id) {
     return this.http.delete(`${this.BASE_URL}/api/event/${id}`,this.requestOptions())
       .map((res) => res.json());
+  }
+
+  createItem(eventId, amount, description) {
+    return this.http.post(`${this.BASE_URL}/api/event/${eventId}/items`, {amount, description}, this.requestOptions())
+      .map((res)=>res.json());
   }
 
   private requestOptions(): RequestOptions {

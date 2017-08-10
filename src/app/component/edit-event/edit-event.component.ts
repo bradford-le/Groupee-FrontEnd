@@ -3,8 +3,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { EventsService } from '../../services/events.service';
 import { FormsModule }  from '@angular/forms'
 import { FormGroup, FormArray,FormBuilder,Validators} from '@angular/forms';
-import {groupeeEvent} from './event.interface';
-import {selector} from 'bootstrap-select';
+import {groupeeEvent} from './event.interface'; 
 
 @Component({
   selector: 'app-edit-event',
@@ -14,8 +13,17 @@ import {selector} from 'bootstrap-select';
 export class EditEventComponent implements OnInit {
 
   groupeeEvent: any;
+  total: Number;
 
   public myForm: FormGroup;
+
+  selectedState: string;
+
+  states = [
+    "OPEN",
+    "REQUEST PAYMENTS",
+    "PAYOUTS"
+  ];
 
   constructor(private eventAPI: EventsService, private router: Router, private route: ActivatedRoute,private _fb:FormBuilder) { }
 
@@ -24,7 +32,8 @@ export class EditEventComponent implements OnInit {
       host:'',
       name:'',
       state:'',
-      payments:[]
+      payments:[],
+      items:[]
     }
     this.route.params.subscribe(params => {
       this.getEventDetails(params['id']);
@@ -32,6 +41,7 @@ export class EditEventComponent implements OnInit {
 
     this.myForm = this._fb.group({
       name:[''],
+      state:[''],
       items: this._fb.array([
           this.initItem(),
       ])
@@ -60,16 +70,32 @@ export class EditEventComponent implements OnInit {
       .subscribe((theEvent)=>{
         this.groupeeEvent = theEvent;
         console.log('get Event Details',theEvent);
+        this.total = this.totalItems();
       });
   }
 
-  save() {
-    // this.eventAPI.update(this.groupeeEvent)
-    //   .subscribe(()=>{
-    //     this.router.navigate(['/dashboard']);
-    //   });
-    console.log(this.groupeeEvent._id);
-    console.log(this.myForm);
+  save(item) {
+    item = this.myForm.value.items;
+    this.eventAPI.update(this.groupeeEvent)
+      .subscribe((newEvent)=>{
+        this.groupeeEvent = newEvent;
+      });
+
+    console.log("FORM VALUES:", this.myForm);
+  
+      this.myForm.value.items.forEach((item) => {
+        if(item.amount !=="" && item.desription !==""){
+        console.log("inside item",item);
+        this.eventAPI.createItem(this.groupeeEvent._id, item.amount, item.description)
+          .subscribe((newEvent)=>{
+            console.log("THE NEW EVENT",newEvent);
+        });
+      }
+        this.router.navigate(['/dashboard']);
+      });
+  }
+  
+  totalItems(): number {
+    return this.groupeeEvent.items.reduce(function(sum, el) { return sum + el.amount }, 0);
+  }
 }
-}
- 

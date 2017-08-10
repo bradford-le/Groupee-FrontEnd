@@ -32,11 +32,12 @@
 
     <div>
       <md-card-title>{{event.name}}</md-card-title>
-      
+      <md-card-subtitle>Number of Items: {{event.items.length}}</md-card-subtitle>
+      <md-card-subtitle>Number of Members: {{event.members.length}}</md-card-subtitle>
       <md-card-subtitle [ngSwitch]="event.state">
         <div *ngSwitchCase="'OPEN'">{{event.host}} - <span class="green">Open</span></div>
-        <div *ngSwitchCase="'wip'">{{event.host}} - <span class="green">Work in progress</span></div>
-        <div *ngSwitchCase="'done'">{{event.host}} - <span class="red">Closed</span></div>
+        <div *ngSwitchCase="'REQUEST PAYMENTS'">{{event.host}} - <span class="green">Requesting Payments...</span></div>
+        <div *ngSwitchCase="'PAYOUTS'">{{event.host}} - <span class="red">Payouts</span></div>
       </md-card-subtitle>
       <md-card-subtitle>{{event.created_at}}</md-card-subtitle>
     </div>

@@ -1,6 +1,7 @@
-
-
 .center{
   text-align: center;
 }
 
+.mat-button, .mat-icon-button, .mat-raised-button {
+  margin-bottom: 5px;
+}

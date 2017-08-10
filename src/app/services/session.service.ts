@@ -4,11 +4,18 @@ import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/catch';
 import { Observable } from 'rxjs/Rx';
 import { Router, CanActivate } from '@angular/router';
+import { environment } from '../../environments/environment';
+
+// Environment variables
+import { environment } from '../../environments/environment';
+
+
 
 @Injectable()
 export class SessionService implements CanActivate {
 
-  BASE_URL: string = 'http://localhost:3000';
+  // BASE_URL: string = 'http://localhost:3000';
+  BASE_URL = environment.BASE_URL;
 
   public user = {};
   public token = '';

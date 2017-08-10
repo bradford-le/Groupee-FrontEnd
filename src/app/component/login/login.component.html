@@ -13,9 +13,9 @@
   </md-input-container>
 
  
-
+<button (click)="login()"> login </button>
   <p class="error"> {{ error }} </p>
   <br><br>
   <button md-raised-button (click)="login()"> login </button>
-
+  <p>Don't have a login? <a [routerLink]="['/signup']">Sign up here</a></p>
 </md-card>

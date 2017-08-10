@@ -9,12 +9,29 @@
             <label>Event Name</label>
             <input type="text" class="form-control" formControlName="name" [(ngModel)]="groupeeEvent.name">
           </div>
-          <md-radio-group>
-              <md-radio-button value="OPEN">OPEN</md-radio-button>
-              <md-radio-button value="REQUEST">REQUEST PAYMENT</md-radio-button>
-              <md-radio-button value="PAY">PAYOUT</md-radio-button>
+          <md-radio-group formControlName="state" [(ngModel)]="groupeeEvent.state">
+            <md-radio-button *ngFor="let state of states" [value]="state">
+              {{state}}
+            </md-radio-button>
           </md-radio-group>
           <br>
+          <!-- ITEMS PANEL -->
+          <div class="panel-group">
+              <div class="panel panel-default">
+                <div class="panel-heading">
+                  <h4 class="panel-title" style="text-align:center">
+                    <a data-toggle="collapse" href="#collapse1">Click to View Current Items</a>
+                  </h4>
+                </div>
+                <div id="collapse1" class="panel-collapse collapse">
+                  <div *ngFor="let item of groupeeEvent.items" class="panel-body">{{item.description}} Amount: ${{item.amount}} <span style="float:right; color: grey">{{item.username}}</span></div>
+                  <div class="panel-footer">TOTAL:
+                    {{total}}
+                  </div>
+                  <div class="panel-footer">YOU OWE:</div>
+                </div>
+              </div>
+            </div>
           <!--ITEMS-->
           <div formArrayName="items">
             <div *ngFor="let item of myForm.controls.items.controls; let i=index" class="panel panel-default">
@@ -40,20 +57,13 @@
               Add another Item +
             </a>
           </div>
-  
           <div class="margin-20">
             <button type="submit" class="btn btn-primary pull-right" [disabled]="!myForm.valid">Submit</button>
+            <button type="button" class="btn btn-primary pull-right" style="margin-right: 5px" [routerLink]="['/dashboard']">< Back</button>
           </div>
           <div class="clearfix"></div>
-  
-          <div class="margin-20">
-            <div>myForm details:-</div>
-            <pre>Is myForm valid?: <br>{{myForm.valid | json}}</pre>
-            <pre>form value: <br>{{myForm.value | json}}</pre>
-          </div>
         </form>
+        <hr>
       </div>
     </div>
   </div>
-    <button md-raised-button  [routerLink]="['/dashboard']"> BACK </button>
-
