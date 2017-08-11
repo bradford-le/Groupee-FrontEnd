@@ -21,6 +21,7 @@ import {FormBuilder, FormArray,FormControl, FormGroup, Validators} from '@angula
 
 import { EventsService } from './services/events.service';
 import { SessionService} from './services/session.service';
+import { PaymentService} from './services/payment.service';
 
 
 import 'hammerjs';
@@ -66,7 +67,7 @@ import { EditEventComponent } from './component/edit-event/edit-event.component'
     HttpModule,
   ],
   providers: [
-    EventsService,SessionService
+    EventsService,SessionService,PaymentService
   ],
   bootstrap: [AppComponent]
 })

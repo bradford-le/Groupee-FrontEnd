@@ -1,69 +1,79 @@
 <div class="container">
-    <div class="row">
-      <div class="col-xs-12">
-        <div class="margin-20">
-          <h4>Edit Event</h4>
-        </div>
-        <form [formGroup]="myForm" novalidate (ngSubmit)="save(myForm)">
-          <div class="form-group">
-            <label>Event Name</label>
-            <input type="text" class="form-control" formControlName="name" [(ngModel)]="groupeeEvent.name">
-          </div>
+  <div class="row">
+    <div class="col-xs-12">
+      <div class="margin-20">
+        <h4>Edit Event</h4>
+      </div>
+      <form [formGroup]="myForm" novalidate (ngSubmit)="save(myForm)">
+
+
+        <md-card>
+          <md-card-header>            
+            <md-input-container>
+              <input mdInput formControlName="name" [(ngModel)]="groupeeEvent.name">
+            </md-input-container>
+          </md-card-header>
+
           <md-radio-group formControlName="state" [(ngModel)]="groupeeEvent.state">
             <md-radio-button *ngFor="let state of states" [value]="state">
               {{state}}
             </md-radio-button>
           </md-radio-group>
-          <br>
-          <!-- ITEMS PANEL -->
-          <div class="panel-group">
-              <div class="panel panel-default">
-                <div class="panel-heading">
-                  <h4 class="panel-title" style="text-align:center">
-                    <a data-toggle="collapse" href="#collapse1">Click to View Current Items</a>
-                  </h4>
-                </div>
-                <div id="collapse1" class="panel-collapse collapse">
-                  <div *ngFor="let item of groupeeEvent.items" class="panel-body">{{item.description}} Amount: ${{item.amount}} <span style="float:right; color: grey">{{item.username}}</span></div>
-                  <div class="panel-footer">TOTAL:
-                    {{total}}
-                  </div>
-                  <div class="panel-footer">YOU OWE:</div>
-                </div>
-              </div>
+
+        </md-card>
+
+        <br>
+        <!-- ITEMS PANEL -->
+        <div class="panel-group">
+          <div class="panel panel-default">
+            <div class="panel-heading">
+              <h4 class="panel-title" style="text-align:center">
+                <a data-toggle="collapse" href="#collapse1">Click to View Current Items</a>
+              </h4>
             </div>
-          <!--ITEMS-->
-          <div formArrayName="items">
-            <div *ngFor="let item of myForm.controls.items.controls; let i=index" class="panel panel-default">
-              <div class="panel-heading">
-                <span>ITEM {{i + 1}}</span>
-                <span class="glyphicon glyphicon-remove pull-right" *ngIf="myForm.controls.items.controls.length > 1" (click)="removeItem(i)"></span>
+            <div id="collapse1" class="panel-collapse collapse">
+              <div *ngFor="let item of groupeeEvent.items" class="panel-body">{{item.description}} Amount: ${{item.amount}} <span style="float:right; color: grey">{{item.username}}</span></div>
+              <div class="panel-footer">Total: {{total}}
               </div>
-              <div class="panel-body" [formGroupName]="i">
-                <div class="form-group col-xs-6">
-                  <label>Description</label>
-                  <input type="text" class="form-control" formControlName="description">
-                </div>
-                <div class="form-group col-xs-6">
-                  <label>Amount</label>
-                  <input type="text" class="form-control" formControlName="amount">
-                </div>
+              <div class="panel-footer">Median: {{median}}
               </div>
+              <div class="panel-footer">YOU OWE:</div>
             </div>
           </div>
-  
-          <div class="margin-20">
-            <a (click)="addItem()" style="cursor: default">
+        </div>
+        <!--ITEMS-->
+        <div formArrayName="items">
+          <div *ngFor="let item of myForm.controls.items.controls; let i=index" class="panel panel-default">
+            <div class="panel-heading">
+              <span>ITEM {{i + 1}}</span>
+              <span class="glyphicon glyphicon-remove pull-right" *ngIf="myForm.controls.items.controls.length > 1" (click)="removeItem(i)"></span>
+            </div>
+            <div class="panel-body" [formGroupName]="i">
+
+              <md-input-container class="width-60">
+                <input mdInput formControlName="description" placeholder="Description">
+              </md-input-container>
+
+              <md-input-container class="width-30">
+                <input mdInput formControlName="amount" placeholder="Amount">
+              </md-input-container>
+
+            </div>
+          </div>
+        </div>
+
+        <div class="margin-20">
+          <a (click)="addItem()" style="cursor: default">
               Add another Item +
             </a>
-          </div>
-          <div class="margin-20">
-            <button type="submit" class="btn btn-primary pull-right" [disabled]="!myForm.valid">Submit</button>
-            <button type="button" class="btn btn-primary pull-right" style="margin-right: 5px" [routerLink]="['/dashboard']">< Back</button>
-          </div>
-          <div class="clearfix"></div>
-        </form>
-        <hr>
-      </div>
+        </div>
+        <div>
+          <button md-raised-button class="right2" [disabled]="!myForm.valid"> Submit </button>
+          <button md-raised-button class="right" style="margin-right: 5px" [routerLink]="['/dashboard']"> < Back </button>
+        </div>
+        <div class="clearfix"></div>
+      </form>
+      <hr>
     </div>
   </div>
+</div>
